@@ -1,0 +1,19 @@
+INFO _internal.py:87  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO _internal.py:87  * Restarting with stat
+WARNING _internal.py:87  * Debugger is active!
+INFO _internal.py:87  * Debugger PIN: 280-770-338
+INFO _internal.py:87 127.0.0.1 - - [25/Mar/2018 10:15:11] "GET /login HTTP/1.1" 404 -
+INFO _internal.py:87 127.0.0.1 - - [25/Mar/2018 10:15:12] "GET /favicon.ico HTTP/1.1" 200 -
+DEBUG web_html.py:24 this is debug
+INFO _internal.py:87 127.0.0.1 - - [25/Mar/2018 10:15:24] "GET /test HTTP/1.1" 200 -
+INFO _internal.py:87  * Detected change in '/home/python/Desktop/FlaskTest/ihome/app/__init__.py', reloading
+INFO _internal.py:87  * Restarting with stat
+WARNING _internal.py:87  * Debugger is active!
+INFO _internal.py:87  * Restarting with stat
+WARNING _internal.py:87  * Debugger is active!
+INFO _internal.py:87  * Debugger PIN: 280-770-338
+DEBUG web_html.py:24 this is debug
+INFO _internal.py:87 127.0.0.1 - - [25/Mar/2018 10:21:01] "GET /test HTTP/1.1" 200 -
+INFO _internal.py:87 127.0.0.1 - - [25/Mar/2018 10:21:01] "GET /favicon.ico HTTP/1.1" 200 -
+INFO _internal.py:87  * Detected change in '/home/python/Desktop/FlaskTest/ihome/app/models.py', reloading
+INFO _internal.py:87  * Restarting with stat
