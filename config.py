@@ -11,6 +11,9 @@ class Config(object):
     # MAIL_PASSWORD = '111qqq'
     # MY_MAIL_SENDER = 'ccy<ccyznhy@126.com>'
     # MY_MAIL_TO = '939064936@qq.com'
+    # 创建redis实例用到的参数
+    REDIS_HOST = '127.0.0.1'
+    REDIS_PORT = 6379
 
 class DevelopmentConfig(Config):
     DEBUG = True

@@ -1,6 +1,7 @@
 # coding=utf-8
+import redis
 from flask import Flask
-from config import config
+from config import config,Config
 from utils.comments import RegexUrl
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import CSRFProtect
@@ -25,6 +26,9 @@ logging.getLogger().addHandler(file_log_handler)
 
 db = SQLAlchemy()
 csrf = CSRFProtect()
+
+# 创建redis对象
+redis_store = redis.StrictRedis(host=Config.REDIS_HOST, port=Config.REDIS_PORT)
 
 
 def create_app(config_name):

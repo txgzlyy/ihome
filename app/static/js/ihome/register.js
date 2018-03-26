@@ -1,3 +1,4 @@
+var imageCodeId = '';
 function getCookie(name) {
     var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");
     return r ? r[1] : undefined;
@@ -20,11 +21,11 @@ function generateUUID() {
 function generateImageCode() {
     // 生成一个编号
     // 严格一点的使用uuid保证编号唯一， 不是很严谨的情况下，也可以使用时间戳
-    imageCodeId = generateUUID();
-
+    var current_img_id = generateUUID();
     // 设置页面中图片验证码img标签的src属性
-    var imageCodeUrl = "/api/v1.0/imagecode/" + imageCodeId;
+    var imageCodeUrl = "/api/v1.0/imagecode?pre=" +imageCodeId + "&cur=" + current_img_id;
     $(".image-code>img").attr("src", imageCodeUrl);
+    imageCodeId = current_img_id
 }
 
 function sendSMSCode() {
