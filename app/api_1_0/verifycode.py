@@ -9,7 +9,6 @@ import logging
 @api.route('/imagecode/')
 def img_code():
     """图片验证码"""
-    print(123)
     # 前一次的img_code_id
     pre_code_id = request.args.get('pre')
     # 当前的img_code_id
@@ -18,7 +17,6 @@ def img_code():
     # name-图片验证码的名字， text-图片验证码的文本， image-图片的二进制数据
     name, txt, img = captcha.generate_captcha()
 
-    print(img)
     try:
         # 把 txt 存入redis 把上一次存入的该用户 验证码删除
         redis_store.delete("ImageCode_"+pre_code_id)
