@@ -4,9 +4,9 @@
 
 #-*- coding: UTF-8 -*-  
 
-from app.libs.ronglian_yun.CCPRestSDK import REST
+from ..libs.ronglian_yun.CCPRestSDK import REST
 import ConfigParser
-print(REST)
+
 #Ö÷ÕÊºÅ
 accountSid= '8a216da862467c3a01626594d1a70b89';
 

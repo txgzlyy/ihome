@@ -6,6 +6,8 @@ from app import redis_store,constants
 import logging
 from app.utils.response_code import RET
 import random
+import re
+from app.utils.sms import CCP
 
 
 
@@ -48,6 +50,10 @@ def SmsCode(mobile):
         # 返回json格式
         return jsonify({"errcode":RET.DATAERR,"errmsg":"数据错误"})
 
+    # 手机号格式校验
+    if not re.match(r"^1[34578]\d{9}$", mobile):
+        return jsonify(errno=RET.PARAMERR, errmsg="手机号格式错误")
+
     # 检验图片验证码正确性  获取数据可能失败
     try:
         redis_img_code = redis_store.get('ImageCode_'+img_code_id)
@@ -65,13 +71,27 @@ def SmsCode(mobile):
     except Exception as e:
         logging.error(e)
 
-    if img_code_text == redis_img_code:
-        # 发送短信验证码至手机
-        # 0,1000000 的随机数  如果没有 6位 就在前面用 0 代替
-        sms_code = "%06d"%random.randint(0,1000000)
+    if img_code_text != redis_img_code:
+        return jsonify(errno=RET.DATAERR,errmsg="图片验证码错误")
 
+    # 0,1000000 的随机数  如果没有 6位 就在前面用 0 代替
+    sms_code = "%06d"%random.randint(0,1000000)
 
+    # 存入redis
+    try:
+        redis_store.setex('SMSCode_'+mobile, constants.SMSCodeTime, sms_code)
+    except Exception as e:
+        logging.error(e)
+        return jsonify(errno=RET.DATAERR,errmsg="保存短信验证码失败")
 
+    # 发送短信验证码至手机
+    try:
+        ccp = CCP.instance()
+        #  sendTemplateSMS(手机号码,内容数据,模板Id)
+        ccp.send_template_sms(mobile,[sms_code,constants.SMSCodeTime/60],1)
+    except Exception as e:
+        logging.error(e)
+        return jsonify(errno=RET.THIRDERR,errmsg="第三方系统错误")
 
 
 

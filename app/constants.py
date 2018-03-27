@@ -3,3 +3,4 @@
 # 项目常量
 
 ImgCodeTime = 180
+SMSCodeTime = 300
