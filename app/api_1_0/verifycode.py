@@ -38,12 +38,14 @@ def img_code():
         return response
 
 
-@api.rout('/smscode/<string:mobile>')
+@api.route('/smscode/<string:mobile>')
 def SmsCode(mobile):
     """短信验证码"""
     # 接收的数据格式  /sms_code/13281121596?id=xxxx&text=xxx    id:图片验证码编号  text:图片验证码文本
     img_code_id = request.args.get('id')
     img_code_text = request.args.get('text')
+
+    print(img_code_text)
 
     # 检查数据正确性
     if not all([mobile,img_code_id,img_code_text]):
@@ -88,10 +90,15 @@ def SmsCode(mobile):
     try:
         ccp = CCP.instance()
         #  sendTemplateSMS(手机号码,内容数据,模板Id)
-        ccp.send_template_sms(mobile,[sms_code,constants.SMSCodeTime/60],1)
+        result = ccp.send_template_sms(mobile,[sms_code,constants.SMSCodeTime/60],1)
     except Exception as e:
         logging.error(e)
         return jsonify(errno=RET.THIRDERR,errmsg="第三方系统错误")
+
+    if 0 == result:
+        return jsonify(errno=RET.OK,errmsg="验证码发送成功")
+    else:
+        return jsonify(errno=RET.DATAERR, errmsg="验证码发送失败")
 
 
 

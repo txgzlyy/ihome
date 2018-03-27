@@ -1,139 +1,75 @@
-INFO _internal.py:87  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-INFO _internal.py:87  * Restarting with stat
 WARNING _internal.py:87  * Debugger is active!
 INFO _internal.py:87  * Debugger PIN: 280-770-338
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:19:22] "GET /register.html HTTP/1.1" 304 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:19:24] "GET /register.html HTTP/1.1" 304 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:19:28] "GET /static/plugins/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:19:28] "GET /static/plugins/font-awesome/css/font-awesome.min.css HTTP/1.1" 404 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:19:28] "GET /static/css/reset.css HTTP/1.1" 304 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:19:28] "GET /static/css/ihome/main.css HTTP/1.1" 304 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:19:28] "GET /static/css/ihome/register.css HTTP/1.1" 304 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:19:28] "GET /static/images/logo@128x59.png HTTP/1.1" 304 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:19:28] "GET /static/js/jquery.min.js HTTP/1.1" 304 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:19:28] "GET /static/plugins/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:19:28] "GET /static/js/ihome/register.js?v=4 HTTP/1.1" 200 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:19:32] "GET /api/v1.0/imagecode?pre=&cur=e85e2e84-4c77-4424-b4f8-2e276830a569 HTTP/1.1" 404 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:20:35] "GET /api/v1.0/imagecode?pre=e85e2e84-4c77-4424-b4f8-2e276830a569&cur=cfc9b3f9-c2f7-4445-b4a0-cccda9b7a883 HTTP/1.1" 404 -
-INFO _internal.py:87  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-INFO _internal.py:87  * Restarting with stat
-WARNING _internal.py:87  * Debugger is active!
-INFO _internal.py:87  * Debugger PIN: 280-770-338
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:23:18] "GET /register.html HTTP/1.1" 304 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:23:19] "GET /static/plugins/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:23:20] "GET /static/plugins/font-awesome/css/font-awesome.min.css HTTP/1.1" 404 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:23:20] "GET /static/css/reset.css HTTP/1.1" 304 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:23:20] "GET /static/css/ihome/main.css HTTP/1.1" 304 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:23:20] "GET /static/css/ihome/register.css HTTP/1.1" 304 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:23:20] "GET /static/images/logo@128x59.png HTTP/1.1" 304 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:23:20] "GET /static/js/jquery.min.js HTTP/1.1" 304 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:23:20] "GET /static/plugins/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:23:20] "GET /static/js/ihome/register.js?v=4 HTTP/1.1" 304 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:23:21] "GET /api/v1.0/imagecode?pre=&cur=701b3678-374e-4d65-8db0-49402686b12f HTTP/1.1" 404 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:23:28] "GET /api/v1.0/imagecode?pre=701b3678-374e-4d65-8db0-49402686b12f&cur=86934a93-8400-466b-837d-0e01b2c0622f HTTP/1.1" 404 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:23:30] "GET /api/v1.0/imagecode?pre=86934a93-8400-466b-837d-0e01b2c0622f&cur=76a9c259-8c47-4868-8b49-e89c49c8cd2a HTTP/1.1" 404 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:23:31] "GET /api/v1.0/imagecode?pre=76a9c259-8c47-4868-8b49-e89c49c8cd2a&cur=921687dd-1bc6-4ecc-be71-a0f9a99304d5 HTTP/1.1" 404 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:24:33] "GET /api/v1.0/imagecode?pre=921687dd-1bc6-4ecc-be71-a0f9a99304d5&cur=2b646d5b-9d3c-458d-b9d1-3562bf5ccc12 HTTP/1.1" 404 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:24:35] "GET /api/v1.0/imagecode?pre=2b646d5b-9d3c-458d-b9d1-3562bf5ccc12&cur=371c2fdd-9722-461f-a4ef-144c60f0d60e HTTP/1.1" 404 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:24:58] "GET /register.html HTTP/1.1" 304 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:24:58] "GET /static/plugins/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:24:58] "GET /static/plugins/font-awesome/css/font-awesome.min.css HTTP/1.1" 404 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:24:58] "GET /static/css/reset.css HTTP/1.1" 304 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:24:58] "GET /static/css/ihome/main.css HTTP/1.1" 304 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:24:58] "GET /static/js/ihome/register.js?v=4 HTTP/1.1" 304 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:24:58] "GET /static/css/ihome/register.css HTTP/1.1" 304 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:24:58] "GET /static/js/jquery.min.js HTTP/1.1" 304 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:24:58] "GET /static/plugins/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:24:58] "GET /static/images/logo@128x59.png HTTP/1.1" 304 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:24:59] "GET /api/v1.0/imagecode?pre=&cur=4ce57377-9c8c-40d4-9e5d-25dbd8fb2cc4 HTTP/1.1" 404 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:25:09] "GET /api/v1.0/imagecode?pre=4ce57377-9c8c-40d4-9e5d-25dbd8fb2cc4&cur=a0ae946a-b9ea-45d1-867c-240d88466d64 HTTP/1.1" 404 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:30:49] "GET /api/v1.0/ HTTP/1.1" 404 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:31:14] "GET /api/v1.0/imagecode HTTP/1.1" 404 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:31:54] "GET /api/v1.0/imagecode HTTP/1.1" 404 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:31:59] "GET /api/v1.0/imagecode HTTP/1.1" 404 -
-INFO _internal.py:87  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-INFO _internal.py:87  * Restarting with stat
-WARNING _internal.py:87  * Debugger is active!
-INFO _internal.py:87  * Debugger PIN: 280-770-338
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:33:08] "GET /api/v1.0/imagecode HTTP/1.1" 404 -
-INFO _internal.py:87  * Detected change in '/home/python/Desktop/FlaskTest/ihome/app/api_1_0/__init__.py', reloading
-INFO _internal.py:87  * Restarting with stat
-WARNING _internal.py:87  * Debugger is active!
-INFO _internal.py:87  * Debugger PIN: 280-770-338
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:34:13] "GET /api/v1.0/imagecode HTTP/1.1" 404 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:34:22] "GET /api/v1.0/mm HTTP/1.1" 200 -
-INFO _internal.py:87  * Detected change in '/home/python/Desktop/FlaskTest/ihome/app/api_1_0/__init__.py', reloading
-INFO _internal.py:87  * Restarting with stat
-WARNING _internal.py:87  * Debugger is active!
-INFO _internal.py:87  * Debugger PIN: 280-770-338
-INFO _internal.py:87  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-INFO _internal.py:87  * Restarting with stat
-WARNING _internal.py:87  * Debugger is active!
-INFO _internal.py:87  * Debugger PIN: 280-770-338
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:37:21] "GET /api/v1.0/mm HTTP/1.1" 404 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:37:36] "GET /api/v1.0/imagecode HTTP/1.1" 404 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:37:41] "GET /api/v1.0/imagecode/ HTTP/1.1" 404 -
-INFO _internal.py:87  * Detected change in '/home/python/Desktop/FlaskTest/ihome/app/api_1_0/__init__.py', reloading
-INFO _internal.py:87  * Restarting with stat
-WARNING _internal.py:87  * Debugger is active!
-INFO _internal.py:87  * Debugger PIN: 280-770-338
-ERROR verifycode.py:27 cannot concatenate 'str' and 'NoneType' objects
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:41:02] "GET /api/v1.0/imagecode/ HTTP/1.1" 500 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:41:02] "GET /api/v1.0/imagecode/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:41:03] "GET /api/v1.0/imagecode/?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:41:03] "GET /api/v1.0/imagecode/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:41:08] "GET /api/v1.0/imagecode/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:41:09] "GET /api/v1.0/imagecode/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
-INFO _internal.py:87  * Detected change in '/home/python/Desktop/FlaskTest/ihome/app/api_1_0/__init__.py', reloading
-INFO _internal.py:87  * Restarting with stat
-WARNING _internal.py:87  * Debugger is active!
-INFO _internal.py:87  * Debugger PIN: 280-770-338
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:02] "GET / HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:04] "GET /static/plugins/font-awesome/css/font-awesome.min.css HTTP/1.1" 404 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:04] "GET /static/plugins/swiper/css/swiper.min.css HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:04] "GET /static/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:04] "GET /static/plugins/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:04] "GET /static/css/reset.css HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:04] "GET /static/css/ihome/index.css HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:04] "GET /static/css/ihome/main.css HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:04] "GET /static/plugins/swiper/js/swiper.jquery.min.js HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:04] "GET /static/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:04] "GET /static/js/template.js HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:04] "GET /static/js/ihome/index.js HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:04] "GET /static/js/jquery.min.js HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:04] "GET /static/plugins/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:04] "GET /static/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:05] "GET /static/images/logo@128x59.png HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:05] "GET /api/v1.0/session HTTP/1.1" 404 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:05] "GET /api/v1.0/houses/index HTTP/1.1" 404 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:05] "GET /api/v1.0/areas HTTP/1.1" 404 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:17] "GET /register.html HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:17] "GET /static/plugins/font-awesome/css/font-awesome.min.css HTTP/1.1" 404 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:17] "GET /static/css/ihome/register.css HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:17] "GET /static/js/ihome/register.js?v=4 HTTP/1.1" 200 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:17] "GET /api/v1.0/imagecode?pre=&cur=0fc30124-8777-4ef9-a3d0-08729b0dc4f5 HTTP/1.1" 301 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:19] "GET /api/v1.0/imagecode/?pre=&cur=0fc30124-8777-4ef9-a3d0-08729b0dc4f5 HTTP/1.1" 200 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:23] "GET /api/v1.0/imagecode?pre=0fc30124-8777-4ef9-a3d0-08729b0dc4f5&cur=f7181be7-e162-487e-97b7-cfe436f0fffc HTTP/1.1" 301 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:24] "GET /api/v1.0/imagecode/?pre=0fc30124-8777-4ef9-a3d0-08729b0dc4f5&cur=f7181be7-e162-487e-97b7-cfe436f0fffc HTTP/1.1" 200 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:24] "GET /api/v1.0/imagecode?pre=f7181be7-e162-487e-97b7-cfe436f0fffc&cur=e4b83ace-dafb-403b-86ab-a601f9ecc28e HTTP/1.1" 301 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:21:24] "GET /api/v1.0/imagecode/?pre=f7181be7-e162-487e-97b7-cfe436f0fffc&cur=e4b83ace-dafb-403b-86ab-a601f9ecc28e HTTP/1.1" 200 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:27:36] "GET /api/v1.0/imagecode?pre=e4b83ace-dafb-403b-86ab-a601f9ecc28e&cur=edd75921-c093-4300-9948-2c432f461c9a HTTP/1.1" 301 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:27:37] "GET /api/v1.0/imagecode/?pre=e4b83ace-dafb-403b-86ab-a601f9ecc28e&cur=edd75921-c093-4300-9948-2c432f461c9a HTTP/1.1" 200 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:28:25] "GET /api/v1.0/imagecode?pre=edd75921-c093-4300-9948-2c432f461c9a&cur=c69fe122-ed8c-4665-b76f-af2fedd7e347 HTTP/1.1" 301 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:28:26] "GET /api/v1.0/imagecode/?pre=edd75921-c093-4300-9948-2c432f461c9a&cur=c69fe122-ed8c-4665-b76f-af2fedd7e347 HTTP/1.1" 200 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:30:42] "GET /smscode/13281121596?id=c69fe122-ed8c-4665-b76f-af2fedd7e347&text=YXPA HTTP/1.1" 404 -
 INFO _internal.py:87  * Detected change in '/home/python/Desktop/FlaskTest/ihome/app/api_1_0/verifycode.py', reloading
-INFO _internal.py:87  * Restarting with stat
 WARNING _internal.py:87  * Debugger is active!
 INFO _internal.py:87  * Debugger PIN: 280-770-338
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:42:45] "GET /static/plugins/font-awesome/css/font-awesome.min.css HTTP/1.1" 404 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:42:49] "GET /api/v1.0/imagecode?pre=&cur=2536262a-b981-46b5-8952-dd1a83b11ff5 HTTP/1.1" 301 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:42:50] "GET /api/v1.0/imagecode/?pre=&cur=2536262a-b981-46b5-8952-dd1a83b11ff5 HTTP/1.1" 200 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:15] "GET /api/v1.0/imagecode?pre=2536262a-b981-46b5-8952-dd1a83b11ff5&cur=be5082bb-d33b-44ab-91fb-586818485405 HTTP/1.1" 301 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:15] "GET /api/v1.0/imagecode/?pre=2536262a-b981-46b5-8952-dd1a83b11ff5&cur=be5082bb-d33b-44ab-91fb-586818485405 HTTP/1.1" 200 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:15] "GET /api/v1.0/imagecode?pre=be5082bb-d33b-44ab-91fb-586818485405&cur=354964a3-e3b6-48c8-8985-5a3bbee7c60b HTTP/1.1" 301 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:15] "GET /api/v1.0/imagecode/?pre=be5082bb-d33b-44ab-91fb-586818485405&cur=354964a3-e3b6-48c8-8985-5a3bbee7c60b HTTP/1.1" 200 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:15] "GET /api/v1.0/imagecode?pre=354964a3-e3b6-48c8-8985-5a3bbee7c60b&cur=936ce3a1-8edc-4dd8-a418-dcd9c4e49ac1 HTTP/1.1" 301 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:15] "GET /api/v1.0/imagecode/?pre=354964a3-e3b6-48c8-8985-5a3bbee7c60b&cur=936ce3a1-8edc-4dd8-a418-dcd9c4e49ac1 HTTP/1.1" 200 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:16] "GET /api/v1.0/imagecode?pre=936ce3a1-8edc-4dd8-a418-dcd9c4e49ac1&cur=445a900f-47eb-4302-bdfe-51c6c4076172 HTTP/1.1" 301 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:16] "GET /api/v1.0/imagecode/?pre=936ce3a1-8edc-4dd8-a418-dcd9c4e49ac1&cur=445a900f-47eb-4302-bdfe-51c6c4076172 HTTP/1.1" 200 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:16] "GET /api/v1.0/imagecode?pre=445a900f-47eb-4302-bdfe-51c6c4076172&cur=9b65b13f-ad19-4214-bd08-daa97d8bf622 HTTP/1.1" 301 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:16] "GET /api/v1.0/imagecode/?pre=445a900f-47eb-4302-bdfe-51c6c4076172&cur=9b65b13f-ad19-4214-bd08-daa97d8bf622 HTTP/1.1" 200 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:16] "GET /api/v1.0/imagecode?pre=9b65b13f-ad19-4214-bd08-daa97d8bf622&cur=21857450-6d48-4375-a910-e73c111fb042 HTTP/1.1" 301 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:16] "GET /api/v1.0/imagecode?pre=21857450-6d48-4375-a910-e73c111fb042&cur=116e87dc-bf27-45cf-94c3-a0f15b5118c6 HTTP/1.1" 301 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:17] "GET /api/v1.0/imagecode/?pre=21857450-6d48-4375-a910-e73c111fb042&cur=116e87dc-bf27-45cf-94c3-a0f15b5118c6 HTTP/1.1" 200 -
-ERROR _internal.py:87 Error on request:
-Traceback (most recent call last):
-  File "/home/python/.virtualenvs/ihome/lib/python2.7/site-packages/werkzeug/serving.py", line 209, in run_wsgi
-    execute(self.server.app)
-  File "/home/python/.virtualenvs/ihome/lib/python2.7/site-packages/werkzeug/serving.py", line 200, in execute
-    write(data)
-  File "/home/python/.virtualenvs/ihome/lib/python2.7/site-packages/werkzeug/serving.py", line 168, in write
-    self.send_header(key, value)
-  File "/usr/lib/python2.7/BaseHTTPServer.py", line 412, in send_header
-    self.wfile.write("%s: %s\r\n" % (keyword, value))
-IOError: [Errno 32] Broken pipe
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:17] "GET /api/v1.0/imagecode?pre=116e87dc-bf27-45cf-94c3-a0f15b5118c6&cur=198ef5c6-2cc4-481d-89ca-c5f2a3ef08bc HTTP/1.1" 301 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:17] "GET /api/v1.0/imagecode/?pre=116e87dc-bf27-45cf-94c3-a0f15b5118c6&cur=198ef5c6-2cc4-481d-89ca-c5f2a3ef08bc HTTP/1.1" 200 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:17] "GET /api/v1.0/imagecode?pre=198ef5c6-2cc4-481d-89ca-c5f2a3ef08bc&cur=bb520743-98cb-4b6f-8f7f-6f1cf38aca45 HTTP/1.1" 301 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:17] "GET /api/v1.0/imagecode/?pre=198ef5c6-2cc4-481d-89ca-c5f2a3ef08bc&cur=bb520743-98cb-4b6f-8f7f-6f1cf38aca45 HTTP/1.1" 200 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:17] "GET /api/v1.0/imagecode?pre=bb520743-98cb-4b6f-8f7f-6f1cf38aca45&cur=88e40a34-f3d3-4567-b077-fd3b363789e7 HTTP/1.1" 301 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:17] "GET /api/v1.0/imagecode/?pre=bb520743-98cb-4b6f-8f7f-6f1cf38aca45&cur=88e40a34-f3d3-4567-b077-fd3b363789e7 HTTP/1.1" 200 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:34] "GET /api/v1.0/imagecode?pre=88e40a34-f3d3-4567-b077-fd3b363789e7&cur=1cad1da9-bd19-4037-9e13-472719f673b6 HTTP/1.1" 301 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:34] "GET /api/v1.0/imagecode/?pre=88e40a34-f3d3-4567-b077-fd3b363789e7&cur=1cad1da9-bd19-4037-9e13-472719f673b6 HTTP/1.1" 200 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:35] "GET /api/v1.0/imagecode?pre=1cad1da9-bd19-4037-9e13-472719f673b6&cur=edf235da-4244-4339-8b68-63a5da1596dd HTTP/1.1" 301 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:35] "GET /api/v1.0/imagecode/?pre=1cad1da9-bd19-4037-9e13-472719f673b6&cur=edf235da-4244-4339-8b68-63a5da1596dd HTTP/1.1" 200 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:36] "GET /api/v1.0/imagecode?pre=edf235da-4244-4339-8b68-63a5da1596dd&cur=9363ec4a-1987-416c-91d1-8ef57f4b3456 HTTP/1.1" 301 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:36] "GET /api/v1.0/imagecode/?pre=edf235da-4244-4339-8b68-63a5da1596dd&cur=9363ec4a-1987-416c-91d1-8ef57f4b3456 HTTP/1.1" 200 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:36] "GET /api/v1.0/imagecode?pre=9363ec4a-1987-416c-91d1-8ef57f4b3456&cur=7d387db6-c46c-4ca5-b248-d42b9c9d0ffb HTTP/1.1" 301 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:36] "GET /api/v1.0/imagecode/?pre=9363ec4a-1987-416c-91d1-8ef57f4b3456&cur=7d387db6-c46c-4ca5-b248-d42b9c9d0ffb HTTP/1.1" 200 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:36] "GET /api/v1.0/imagecode?pre=7d387db6-c46c-4ca5-b248-d42b9c9d0ffb&cur=a3cf40df-2c81-4531-a4d4-50f4774f22b8 HTTP/1.1" 301 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:36] "GET /api/v1.0/imagecode/?pre=7d387db6-c46c-4ca5-b248-d42b9c9d0ffb&cur=a3cf40df-2c81-4531-a4d4-50f4774f22b8 HTTP/1.1" 200 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:36] "GET /api/v1.0/imagecode?pre=a3cf40df-2c81-4531-a4d4-50f4774f22b8&cur=522c00d0-4ce9-4cb2-8ac8-9e1206419299 HTTP/1.1" 301 -
-INFO _internal.py:87 127.0.0.1 - - [26/Mar/2018 16:43:36] "GET /api/v1.0/imagecode/?pre=a3cf40df-2c81-4531-a4d4-50f4774f22b8&cur=522c00d0-4ce9-4cb2-8ac8-9e1206419299 HTTP/1.1" 200 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:32:14] "GET /smscode/13281121596?id=c69fe122-ed8c-4665-b76f-af2fedd7e347&text=YXPA HTTP/1.1" 404 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:32:15] "GET /favicon.ico HTTP/1.1" 200 -
+INFO _internal.py:87  * Detected change in '/home/python/Desktop/FlaskTest/ihome/app/api_1_0/verifycode.py', reloading
+WARNING _internal.py:87  * Debugger is active!
+INFO _internal.py:87  * Debugger PIN: 280-770-338
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:32:54] "GET /register.html HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:32:54] "GET /static/plugins/font-awesome/css/font-awesome.min.css HTTP/1.1" 404 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:32:54] "GET /static/css/ihome/register.css HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:32:54] "GET /static/css/reset.css HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:32:54] "GET /static/js/jquery.min.js HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:32:54] "GET /static/js/ihome/register.js?v=4 HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:32:54] "GET /static/plugins/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:32:54] "GET /static/css/ihome/main.css HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:32:54] "GET /static/plugins/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:32:54] "GET /static/images/logo@128x59.png HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:32:54] "GET /api/v1.0/imagecode?pre=&cur=4983f453-8d3b-4a70-923f-e33a65889026 HTTP/1.1" 301 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:32:55] "GET /api/v1.0/imagecode/?pre=&cur=4983f453-8d3b-4a70-923f-e33a65889026 HTTP/1.1" 200 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:32:55] "GET /favicon.ico HTTP/1.1" 200 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:34:06] "GET /smscode/13281121596?id=4983f453-8d3b-4a70-923f-e33a65889026&text=WQJH HTTP/1.1" 404 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:34:46] "GET /api/v1.0/smscode/13281121596?id=4983f453-8d3b-4a70-923f-e33a65889026&text=WQJH HTTP/1.1" 200 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:41:18] "GET /api/v1.0/smscode/13281121596?id=4983f453-8d3b-4a70-923f-e33a65889026&text=WQJH HTTP/1.1" 200 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:41:18] "GET /favicon.ico HTTP/1.1" 200 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:41:32] "GET /register.html HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:41:32] "GET /static/plugins/font-awesome/css/font-awesome.min.css HTTP/1.1" 404 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:41:32] "GET /static/css/ihome/main.css HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:41:32] "GET /static/images/logo@128x59.png HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:41:32] "GET /static/js/jquery.min.js HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:41:32] "GET /static/css/reset.css HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:41:32] "GET /static/plugins/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:41:32] "GET /static/css/ihome/register.css HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:41:32] "GET /static/js/ihome/register.js?v=4 HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:41:32] "GET /static/plugins/bootstrap/js/bootstrap.min.js HTTP/1.1" 304 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:41:32] "GET /api/v1.0/imagecode?pre=&cur=0926deee-94c3-4539-8e14-070ae931a86e HTTP/1.1" 301 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:41:32] "GET /api/v1.0/imagecode/?pre=&cur=0926deee-94c3-4539-8e14-070ae931a86e HTTP/1.1" 200 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:41:32] "GET /favicon.ico HTTP/1.1" 200 -
+INFO _internal.py:87 127.0.0.1 - - [27/Mar/2018 16:42:21] "GET /api/v1.0/smscode/13281121596?id=0926deee-94c3-4539-8e14-070ae931a86e&text=BIMN HTTP/1.1" 200 -
