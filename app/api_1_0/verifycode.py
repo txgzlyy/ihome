@@ -45,8 +45,6 @@ def SmsCode(mobile):
     img_code_id = request.args.get('id')
     img_code_text = request.args.get('text')
 
-    print(img_code_text)
-
     # 检查数据正确性
     if not all([mobile,img_code_id,img_code_text]):
         # 返回json格式
@@ -73,7 +71,8 @@ def SmsCode(mobile):
     except Exception as e:
         logging.error(e)
 
-    if img_code_text != redis_img_code:
+    # 转大写
+    if img_code_text.upper() != redis_img_code:
         return jsonify(errno=RET.DATAERR,errmsg="图片验证码错误")
 
     # 0,1000000 的随机数  如果没有 6位 就在前面用 0 代替
