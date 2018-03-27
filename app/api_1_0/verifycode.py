@@ -36,7 +36,7 @@ def img_code():
         return response
 
 
-@api.rout('/smscode/<mobile>')
+@api.rout('/smscode/<string:mobile>')
 def SmsCode(mobile):
     """短信验证码"""
     # 接收的数据格式  /sms_code/13281121596?id=xxxx&text=xxx    id:图片验证码编号  text:图片验证码文本
