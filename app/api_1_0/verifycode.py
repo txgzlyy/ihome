@@ -38,6 +38,70 @@ def img_code():
         return response
 
 
+# @api.route('/smscode/<string:mobile>')
+# def SmsCode(mobile):
+#     """短信验证码"""
+#     # 接收的数据格式  /sms_code/13281121596?id=xxxx&text=xxx    id:图片验证码编号  text:图片验证码文本
+#     img_code_id = request.args.get('id')
+#     img_code_text = request.args.get('text')
+#
+#     # 检查数据正确性
+#     if not all([mobile,img_code_id,img_code_text]):
+#         # 返回json格式
+#         return jsonify({"errcode":RET.DATAERR,"errmsg":"数据错误"})
+#
+#     # 手机号格式校验
+#     if not re.match(r"^1[34578]\d{9}$", mobile):
+#         return jsonify(errno=RET.PARAMERR, errmsg="手机号格式错误")
+#
+#     # 检验图片验证码正确性  获取数据可能失败
+#     try:
+#         redis_img_code = redis_store.get('ImageCode_'+img_code_id)
+#     except Exception as e:
+#         logging.error(e)
+#         return jsonify(errno=RET.DBERR, errmsg="查询数据异常")
+#
+#     # 如果验证码已经过期
+#     if redis_img_code == '':
+#         return jsonify(errno=RET.DBERR, errmsg="验证码已经失效")
+#
+#     # 删除redis中的验证码
+#     try:
+#         redis_store.delete("ImageCode_"+img_code_id)
+#     except Exception as e:
+#         logging.error(e)
+#
+#     # 转大写
+#     if img_code_text.upper() != redis_img_code:
+#         return jsonify(errno=RET.DATAERR,errmsg="图片验证码错误")
+#
+#     # 0,1000000 的随机数  如果没有 6位 就在前面用 0 代替
+#     sms_code = "%06d"%random.randint(0,1000000)
+#
+#     # 存入redis
+#     try:
+#         redis_store.setex('SMSCode_'+mobile, constants.SMSCodeTime, sms_code)
+#     except Exception as e:
+#         logging.error(e)
+#         return jsonify(errno=RET.DATAERR,errmsg="保存短信验证码失败")
+#
+#     # 发送短信验证码至手机
+#     try:
+#         ccp = CCP.instance()
+#         #  sendTemplateSMS(手机号码,内容数据,模板Id)
+#         result = ccp.send_template_sms(mobile,[sms_code,constants.SMSCodeTime/60],1)
+#     except Exception as e:
+#         logging.error(e)
+#         return jsonify(errno=RET.THIRDERR,errmsg="第三方系统错误")
+#
+#     if 0 == result:
+#         return jsonify(errno=RET.OK,errmsg="验证码发送成功")
+#     else:
+#         return jsonify(errno=RET.DATAERR, errmsg="验证码发送失败")
+
+
+
+# post 方式重写
 @api.route('/smscode/<string:mobile>')
 def SmsCode(mobile):
     """短信验证码"""
@@ -98,7 +162,6 @@ def SmsCode(mobile):
         return jsonify(errno=RET.OK,errmsg="验证码发送成功")
     else:
         return jsonify(errno=RET.DATAERR, errmsg="验证码发送失败")
-
 
 
 
