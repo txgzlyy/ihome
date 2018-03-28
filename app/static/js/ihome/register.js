@@ -37,7 +37,7 @@ function sendSMSCode() {
         $("#mobile-err").show();
         $(".phonecode-a").attr("onclick", "sendSMSCode();");
         return;
-    } 
+    }
     var imageCode = $("#imagecode").val();
     if (!imageCode) {
         $("#image-code-err span").html("请填写验证码！");
@@ -47,40 +47,84 @@ function sendSMSCode() {
     }
 
     // 通过ajax方式向后端接口发送请求，让后端发送短信验证码
-    var req = {
-        text: imageCode, // 用户填写的图片验证码
-        id: imageCodeId // 图片验证码的编号
-    }
-    $.get("/api/v1.0/smscode/"+mobile, req, function (resp) {
-        // 表示后端发送短信成功
-        if (resp.errno == "0") {
-            // 倒计时60秒，60秒后允许用户再次点击发送短信验证码的按钮
-            var num = 60;
-            // 设置一个计时器
-            var t = setInterval(function () {
-                if (num == 1) {
-                    // 如果计时器到最后, 清除计时器对象
-                    clearInterval(t);
-                    // 将点击获取验证码的按钮展示的文本回复成原始文本
-                    $(".phonecode-a").html("获取验证码");
-                    // 将点击按钮的onclick事件函数恢复回去
-                    $(".phonecode-a").attr("onclick", "sendSMSCode();");
-                } else {
-                    num -= 1;
-                    // 展示倒计时信息
-                    $(".phonecode-a").html(num+"秒");
-                }
-            }, 1000, 60)
-        } else {
-            // 表示后端出现了错误，可以将错误信息展示到前端页面中
-            $("#phone-code-err span").html(resp.errmsg);
-            $("#phone-code-err").show();
-            // 将点击按钮的onclick事件函数恢复回去
-            $(".phonecode-a").attr("onclick", "sendSMSCode();");
+    // var req = {
+    //     text: imageCode, // 用户填写的图片验证码
+    //     id: imageCodeId // 图片验证码的编号
+    // };
+    // $.get("/api/v1.0/smscode/"+mobile, req, function (resp) {
+    //     // 表示后端发送短信成功
+    //     if (resp.errno == "0") {
+    //         // 倒计时60秒，60秒后允许用户再次点击发送短信验证码的按钮
+    //         var num = 60;
+    //         // 设置一个计时器
+    //         var t = setInterval(function () {
+    //             if (num == 1) {
+    //                 // 如果计时器到最后, 清除计时器对象
+    //                 clearInterval(t);
+    //                 // 将点击获取验证码的按钮展示的文本回复成原始文本
+    //                 $(".phonecode-a").html("获取验证码");
+    //                 // 将点击按钮的onclick事件函数恢复回去
+    //                 $(".phonecode-a").attr("onclick", "sendSMSCode();");
+    //             } else {
+    //                 num -= 1;
+    //                 // 展示倒计时信息
+    //                 $(".phonecode-a").html(num+"秒");
+    //             }
+    //         }, 1000, 60)
+    //     } else {
+    //         // 表示后端出现了错误，可以将错误信息展示到前端页面中
+    //         $("#phone-code-err span").html(resp.errmsg);
+    //         $("#phone-code-err").show();
+    //         // 将点击按钮的onclick事件函数恢复回去
+    //         $(".phonecode-a").attr("onclick", "sendSMSCode();");
+    //     }
+    //
+    // }, "json");
+
+    // post 方式
+    var data = {
+        mobile:$('#mobile').val(),
+        text:imageCode,
+        id:imageCodeId
+    };
+    $.ajax({
+        method : "POST",
+        url : "/api/v1.0/smscode/",
+        headers:{
+            "X-CSRFToken" : getCookie('csrf_token')
+        },
+        data: JSON.stringify(data),
+        contentType : "application/json",
+        dataType : 'json',
+        success : function(resp){
+            // 表示后端发送短信成功
+            if (resp.errno == "0") {
+                // 倒计时60秒，60秒后允许用户再次点击发送短信验证码的按钮
+                var num = 60;
+                // 设置一个计时器
+                var t = setInterval(function () {
+                    if (num == 1) {
+                        // 如果计时器到最后, 清除计时器对象
+                        clearInterval(t);
+                        // 将点击获取验证码的按钮展示的文本回复成原始文本
+                        $(".phonecode-a").html("获取验证码");
+                        // 将点击按钮的onclick事件函数恢复回去
+                        $(".phonecode-a").attr("onclick", "sendSMSCode();");
+                    } else {
+                        num -= 1;
+                        // 展示倒计时信息
+                        $(".phonecode-a").html(num+"秒");
+                    }
+                }, 1000, 60)
+            } else {
+                // 表示后端出现了错误，可以将错误信息展示到前端页面中
+                $("#phone-code-err span").html(resp.errmsg);
+                $("#phone-code-err").show();
+                // 将点击按钮的onclick事件函数恢复回去
+                $(".phonecode-a").attr("onclick", "sendSMSCode();");
+            }
         }
-
-    }, "json");
-
+    });
 }
 
 $(document).ready(function() {

@@ -8,6 +8,8 @@ from app.utils.response_code import RET
 import random
 import re
 from app.utils.sms import CCP
+import json
+from ..models import UserInfo
 
 
 
@@ -41,7 +43,7 @@ def img_code():
 # @api.route('/smscode/<string:mobile>')
 # def SmsCode(mobile):
 #     """短信验证码"""
-#     # 接收的数据格式  /sms_code/13281121596?id=xxxx&text=xxx    id:图片验证码编号  text:图片验证码文本
+#     # 接收的数据格式  /api/v1.0/smscode/13281121596?id=xxxx&text=xxx    id:图片验证码编号  text:图片验证码文本
 #     img_code_id = request.args.get('id')
 #     img_code_text = request.args.get('text')
 #
@@ -102,12 +104,15 @@ def img_code():
 
 
 # post 方式重写
-@api.route('/smscode/<string:mobile>')
-def SmsCode(mobile):
+@api.route('/smscode/',methods=['POST'])
+def SmsCode():
     """短信验证码"""
-    # 接收的数据格式  /sms_code/13281121596?id=xxxx&text=xxx    id:图片验证码编号  text:图片验证码文本
-    img_code_id = request.args.get('id')
-    img_code_text = request.args.get('text')
+    # 接收的数据格式  /api/v1.0/sms_code/
+    #data = json.loads(request.form.to_dict().keys()[0])
+    data = json.loads(request.get_data())
+    mobile = data["mobile"]
+    img_code_id = data['id']
+    img_code_text = data['text']
 
     # 检查数据正确性
     if not all([mobile,img_code_id,img_code_text]):
@@ -138,6 +143,15 @@ def SmsCode(mobile):
     # 转大写
     if img_code_text.upper() != redis_img_code:
         return jsonify(errno=RET.DATAERR,errmsg="图片验证码错误")
+
+    # 检查该手机号是否已经注册
+    try:
+        user = UserInfo.query.filer_by(user_mobile=mobile).first()
+    except Exception as e:
+        logging.error(e)
+        return jsonify(errno=RET.DATAERR,errmsg='查询数据异常')
+    if user:
+        return jsonify(errno=RET.DATAEXIST,errmsg='该手机好已注册')
 
     # 0,1000000 的随机数  如果没有 6位 就在前面用 0 代替
     sms_code = "%06d"%random.randint(0,1000000)
