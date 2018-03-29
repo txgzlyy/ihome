@@ -218,6 +218,7 @@ def register_api():
         db.session.add(user)
         db.session.commit()
     except Exception as e:
+        logging.error(e)
         return jsonify(errno=RET.DATAERR, errmsg="数据存储错误")
 
     return jsonify(errno=RET.OK, errmsg="保存成功")
