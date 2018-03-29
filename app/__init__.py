@@ -5,6 +5,8 @@ from config import config,Config
 from utils.comments import RegexUrl
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import CSRFProtect
+# session 关联 redis 数据库
+from flask_session import Session
 # 日志
 import logging
 # 日志 控制器中的文件控制器
@@ -27,7 +29,7 @@ logging.getLogger().addHandler(file_log_handler)
 db = SQLAlchemy()
 csrf = CSRFProtect()
 
-# 创建redis对象
+# 创建redis对象 本台服务器（主机）的redis
 redis_store = redis.StrictRedis(host=Config.REDIS_HOST, port=Config.REDIS_PORT)
 
 
@@ -39,6 +41,7 @@ def create_app(config_name):
 
     db.init_app(app)
     csrf.init_app(app)
+    Session(app)
 
     from api_1_0 import api as api_buleprint
     app.register_blueprint(api_buleprint,url_prefix='/api/v1.0')

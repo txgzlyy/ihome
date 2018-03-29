@@ -3,6 +3,7 @@
 from flask import Blueprint,make_response,current_app
 import logging
 from flask_wtf import csrf
+from flask import session
 
 html = Blueprint('html',__name__)
 
@@ -23,7 +24,8 @@ def html_url(file_name):
     return response
 
 
-@html.route('/test')
+@html.route('/test/')
 def test():
     logging.debug('this is debug')
+    session['username'] = 'abc'
     return 'ok'
