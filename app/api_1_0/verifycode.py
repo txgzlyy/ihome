@@ -10,6 +10,7 @@ import re
 from app.utils.sms import CCP
 import json
 from ..models import UserInfo
+from app import db
 
 
 
@@ -110,6 +111,8 @@ def SmsCode():
     # 接收的数据格式  /api/v1.0/sms_code/
     #data = json.loads(request.form.to_dict().keys()[0])
     data = json.loads(request.get_data())
+    if data == None:
+        return jsonify({"errcode":RET.DATAERR,"errmsg":"数据获取失败"})
     mobile = data["mobile"]
     img_code_id = data['id']
     img_code_text = data['text']
@@ -146,7 +149,7 @@ def SmsCode():
 
     # 检查该手机号是否已经注册
     try:
-        user = UserInfo.query.filer_by(user_mobile=mobile).first()
+        user = UserInfo.query.filter_by(user_mobile=mobile).first()
     except Exception as e:
         logging.error(e)
         return jsonify(errno=RET.DATAERR,errmsg='查询数据异常')
@@ -176,6 +179,49 @@ def SmsCode():
         return jsonify(errno=RET.OK,errmsg="验证码发送成功")
     else:
         return jsonify(errno=RET.DATAERR, errmsg="验证码发送失败")
+
+
+@api.route('/users/',methods=['POST'])
+def register_api():
+    '''用户注册'''
+    # 接收 {"mobile": mobile,"password": passwd,"sms_code": phoneCode}
+    data = json.loads(request.get_data())   # 字典类型
+    if data == None:
+        return jsonify({"errcode":RET.DATAERR,"errmsg":"数据获取失败"})
+    mobile = data['mobile']
+    password = data['password']
+    sms_code = data['sms_code']
+
+    # 检验 短信验证码
+    try:
+        redis_sms_code = redis_store.get('SMSCode_'+mobile)
+    except Exception as e:
+        logging.error(e)
+        return jsonify(errno=RET.DBERR, errmsg="查询数据异常")
+
+    # 验证码过期
+    if redis_sms_code=='':
+        return jsonify(errno=RET.DBERR, errmsg="短信验证码已经失效")
+
+    # 在redis删除短信验证码
+    try:
+        redis_store.delete('SMSCode_'+mobile)
+    except Exception as e:
+        logging.error(e)
+
+    if redis_sms_code != sms_code:
+        return jsonify(errno=RET.DBERR, errmsg="短信验证码输入不正确")
+
+    #手机号和密码存入数据库
+    try:
+        user = UserInfo(user_name=mobile, user_mobile=mobile, password=password)
+        db.session.add(user)
+        db.session.commit()
+    except Exception as e:
+        return jsonify(errno=RET.DATAERR, errmsg="数据存储错误")
+
+    return jsonify(errno=RET.OK, errmsg="保存成功")
+
 
 
 

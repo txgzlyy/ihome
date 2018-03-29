@@ -156,7 +156,7 @@ $(document).ready(function() {
             $("#mobile-err span").html("请填写正确的手机号！");
             $("#mobile-err").show();
             return;
-        } 
+        }
         if (!phoneCode) {
             $("#phone-code-err span").html("请填写短信验证码！");
             $("#phone-code-err").show();
@@ -189,7 +189,7 @@ $(document).ready(function() {
 
         // 向后端发送注册请求
         $.ajax({
-            url: "/api/v1.0/users",
+            url: "/api/v1.0/users/",
             type: "POST",
             contentType: "application/json",  // 指明发送到后端的数据格式是json
             data: JSON.stringify(req),
