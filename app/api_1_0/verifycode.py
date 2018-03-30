@@ -1,6 +1,6 @@
 # coding=utf-8
 from . import api
-from flask import make_response,request,jsonify
+from flask import make_response,request,jsonify,session
 from app.utils.captcha.captcha import captcha
 from app import redis_store,constants
 import logging
@@ -111,11 +111,12 @@ def SmsCode():
     # 接收的数据格式  /api/v1.0/sms_code/
     #data = json.loads(request.form.to_dict().keys()[0])
     data = json.loads(request.get_data())
-    if data == None:
-        return jsonify({"errcode":RET.DATAERR,"errmsg":"数据获取失败"})
-    mobile = data["mobile"]
-    img_code_id = data['id']
-    img_code_text = data['text']
+
+    mobile = data.get("mobile")
+    img_code_id = data.get('id')
+    img_code_text = data.get('text')
+    if not all([mobile, img_code_id, img_code_text]):
+        return jsonify({"errcode": RET.DATAERR, "errmsg": "参数错误"})
 
     # 检查数据正确性
     if not all([mobile,img_code_id,img_code_text]):
@@ -188,9 +189,12 @@ def register_api():
     data = json.loads(request.get_data())   # 字典类型
     if data == None:
         return jsonify({"errcode":RET.DATAERR,"errmsg":"数据获取失败"})
-    mobile = data['mobile']
-    password = data['password']
-    sms_code = data['sms_code']
+    mobile = data.get('mobile')
+    password = data.get('password')
+    sms_code = data.get('sms_code')
+
+    if not all([mobile, password, sms_code]):
+        return jsonify({"errcode": RET.DATAERR, "errmsg": "参数错误"})
 
     # 检验 短信验证码
     try:
@@ -219,12 +223,46 @@ def register_api():
         db.session.commit()
     except Exception as e:
         logging.error(e)
-        return jsonify(errno=RET.DATAERR, errmsg="数据存储错误")
+        db.session.rollback()
+        return jsonify(errno=RET.DATAERR, errmsg="手机号已存在")
+
+    # 保存登陆信息
+    # print(user.id)
+    session['user_id'] = user.id
+    session['name'] = mobile
+    session['mobile'] = mobile
 
     return jsonify(errno=RET.OK, errmsg="保存成功")
 
 
+@api.route('/sessions/',methods=['POST'])
+def login_api():
+    '''用户登陆'''
+    data = json.loads(request.get_data())
+    if data == None:
+        return jsonify({"errcode":RET.DATAERR,"errmsg":"数据获取失败"})
+    mobile = data.get('mobile')
+    password = data.get('password')
 
+    if not all([mobile, password]):
+        return jsonify({"errcode": RET.DATAERR, "errmsg": "参数错误"})
+
+    # 检验用户名密码
+    try:
+        user = UserInfo.query.filter_by(user_mobile=mobile).first()
+    except Exception as e:
+        logging.error(e)
+        return jsonify(errno=RET.DATAERR, errmsg='查询数据异常,该手机号不存在')
+
+    if not user.check_password(password):      #  user.check_password(password)  密码检验函数 通过返回真
+        return jsonify(errno=RET.DATAERR, errmsg='密码错误！')
+
+    # 用户验证成功，保存用户的session数据
+    session["user_id"] = user.id
+    session["name"] = user.user_name
+    session["mobile"] = user.user_mobile
+
+    return jsonify(errno=RET.OK, errmsg="登陆")
 
 
 

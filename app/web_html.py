@@ -27,5 +27,6 @@ def html_url(file_name):
 @html.route('/test/')
 def test():
     logging.debug('this is debug')
-    session['username'] = 'abc'
+    #session['username'] = 'abc'
+    print session.get('user_id')
     return 'ok'
