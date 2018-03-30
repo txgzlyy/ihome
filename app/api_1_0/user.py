@@ -7,6 +7,7 @@ from app import redis_store
 from ..models import UserInfo
 import json
 import logging
+from app.utils.comments import logout_req
 
 
 @api.route('/users/',methods=['POST'])
@@ -88,5 +89,37 @@ def login_api():
     session["user_id"] = user.id
     session["name"] = user.user_name
     session["mobile"] = user.user_mobile
-
+    print(123)
     return jsonify(errno=RET.OK, errmsg="登陆",data={"user_id":user.id})
+
+
+# @api.route("/session", methods=["GET"])
+# def check_login():
+#     """检查登陆状态"""
+#     # 尝试从session中获取用户的名字
+#     name = session.get("name")
+#     # 如果session中数据name名字存在，则表示用户已登录，否则未登录
+#     if name is not None:
+#         return jsonify(errno=RET.OK, errmsg="true", data={"name": name})
+#     else:
+#         return jsonify(errno=RET.SESSIONERR, errmsg="false")
+
+
+@api.route('/session/',methods=['DELETE'])
+@logout_req
+def logout_api():
+    '''登出'''
+    session.clear()
+    return jsonify(errno=RET.OK, errmsg="退出成功")
+
+
+
+
+
+
+
+
+
+
+
+
