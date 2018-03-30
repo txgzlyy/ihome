@@ -491,3 +491,17 @@ INFO _internal.py:87 127.0.0.1 - - [30/Mar/2018 11:13:34] "GET /static/plugins/s
 INFO _internal.py:87 127.0.0.1 - - [30/Mar/2018 11:13:41] "GET /test HTTP/1.1" 301 -
 DEBUG web_html.py:29 this is debug
 INFO _internal.py:87 127.0.0.1 - - [30/Mar/2018 11:13:41] "GET /test/ HTTP/1.1" 200 -
+WARNING _internal.py:87  * Debugger is active!
+INFO _internal.py:87  * Debugger PIN: 280-770-338
+INFO _internal.py:87  * Detected change in '/home/python/Desktop/FlaskTest/ihome/app/api_1_0/verifycode.py', reloading
+WARNING _internal.py:87  * Debugger is active!
+INFO _internal.py:87  * Debugger PIN: 280-770-338
+INFO _internal.py:87  * Detected change in '/home/python/Desktop/FlaskTest/ihome/app/api_1_0/verifycode.py', reloading
+WARNING _internal.py:87  * Debugger is active!
+INFO _internal.py:87  * Debugger PIN: 280-770-338
+INFO _internal.py:87  * Detected change in '/home/python/Desktop/FlaskTest/ihome/app/api_1_0/verifycode.py', reloading
+WARNING _internal.py:87  * Debugger is active!
+INFO _internal.py:87  * Debugger PIN: 280-770-338
+INFO _internal.py:87  * Detected change in '/home/python/Desktop/FlaskTest/ihome/app/api_1_0/__init__.py', reloading
+WARNING _internal.py:87  * Debugger is active!
+INFO _internal.py:87  * Debugger PIN: 280-770-338
