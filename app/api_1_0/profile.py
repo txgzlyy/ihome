@@ -57,10 +57,31 @@ def get_user():
     return jsonify(errno=RET.OK, errmsg="ok",data=user.get_dict())
 
 
-@api.route('user/name',methods=['PUT'])
+@api.route('/user/name',methods=['PUT'])
 @logout_req
 def set_user_name():
     '''修改用户名'''
-    name = json.loads(request.get_data('name'))
-    print(name)
+    user_id = g.user_id
+    data = json.loads(request.get_data())
+    if not data:
+        return jsonify(errno=RET.PARAMERR, errmsg="参数不完整")
+    name = data['name']
+    # 跟新数据库中的用户名
+    try:
+        UserInfo.query.filter_by(id=user_id).update({"user_name":name})
+        db.session.commit()
+    except Exception as e:
+        logging.error(e)
+        db.rollback()
+        return jsonify(errno=RET.DBERR, errmsg="数据错误")
+
     return jsonify(errno=RET.OK, errmsg="ok")
+
+
+
+
+
+
+
+
+
