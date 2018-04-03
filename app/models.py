@@ -2,6 +2,7 @@
 from . import db
 from datetime import datetime
 from werkzeug.security import generate_password_hash,check_password_hash
+from app import constants
 
 class Basec(object):
     create_time = db.Column(db.DateTime,default=datetime.now())
@@ -34,6 +35,14 @@ class UserInfo(Basec, db.Model):
     def check_password(self,passwords):
         """检查密码的正确性"""
         return check_password_hash(self.password_hash,passwords)
+
+    def get_dict(self):
+        data = {
+            "name":self.user_name,
+            "mobile": self.user_mobile,
+            "avatar": constants.QINIUIMGURL + self.author_url if self.author_url else ""
+        }
+        return data
 
 
 # 房屋设施表，建立房屋与设施的多对多关系

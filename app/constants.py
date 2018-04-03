@@ -4,3 +4,6 @@
 
 ImgCodeTime = 180
 SMSCodeTime = 300
+QINIUIMGURL = "http://p6jjzvh8f.bkt.clouddn.com/"
+
+
