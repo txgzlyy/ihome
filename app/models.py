@@ -40,7 +40,9 @@ class UserInfo(Basec, db.Model):
         data = {
             "name":self.user_name,
             "mobile": self.user_mobile,
-            "avatar": constants.QINIUIMGURL + self.author_url if self.author_url else ""
+            "avatar": constants.QINIUIMGURL + self.author_url if self.author_url else "",
+            "real_name": self.real_name,
+            "id_card": self.id_card
         }
         return data
 

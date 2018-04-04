@@ -28,6 +28,7 @@ def get_avatar():
     # 存入数据库
     user_id = g.user_id
     try:
+        #  update 方法 第一次添加 第二次可以修改
         UserInfo.query.filter_by(id=user_id).update({"author_url": avatar_img_name})
         db.session.commit()
     except Exception as e:
@@ -74,8 +75,29 @@ def set_user_name():
         logging.error(e)
         db.rollback()
         return jsonify(errno=RET.DBERR, errmsg="数据错误")
-
     return jsonify(errno=RET.OK, errmsg="ok")
+
+
+@api.route('/user/auth',methods=['POST','GET'])
+@logout_req
+def rel_auth():
+    '''用户实名认证'''
+    user_id = g.user_id
+    user = UserInfo.query.filter_by(id=user_id)
+    if request.method == 'POST':
+        data = json.loads(request.get_data())
+        real_name = data.get('real_name')
+        id_card = data.get('id_card')
+        # 保存数据库
+        try:
+            user.update({'real_name':real_name,"id_card":id_card})
+            db.session.commit()
+        except Exception as e:
+            logging.error(e)
+            db.rollback()
+            return jsonify(errno=RET.DBERR,errmsg='数据错误')
+    return jsonify(errno=RET.OK,errmsg='ok',data=user.first().get_dict())
+
 
 
 
