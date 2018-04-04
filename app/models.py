@@ -104,10 +104,15 @@ class Area(Basec,db.Model):
     """城区"""
     __tablename__ = 'ih_areas'
     id = db.Column(db.Integer,primary_key=True)
-
     house = db.relationship('HouseInfo',backref="ih_areas")
-
     name = db.Column(db.String(32), nullable=False)  # 区域名字
+
+    def to_dict(self):
+        data = {
+            "aid": self.id,
+            "aname": self.name
+        }
+        return data
 
 
 class Order(Basec,db.Model):

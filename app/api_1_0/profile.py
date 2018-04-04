@@ -1,7 +1,7 @@
 # coding=utf-8
 from . import api
 from app import db
-from flask import request,jsonify,g
+from flask import request,jsonify,g,session
 from app.utils.img_store import img_store
 from app.utils.comments import logout_req
 from app.utils.response_code import RET
@@ -71,6 +71,7 @@ def set_user_name():
     try:
         UserInfo.query.filter_by(id=user_id).update({"user_name":name})
         db.session.commit()
+        session["name"] = name
     except Exception as e:
         logging.error(e)
         db.rollback()
@@ -97,9 +98,6 @@ def rel_auth():
             db.rollback()
             return jsonify(errno=RET.DBERR,errmsg='数据错误')
     return jsonify(errno=RET.OK,errmsg='ok',data=user.first().get_dict())
-
-
-
 
 
 
