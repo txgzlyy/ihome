@@ -2,10 +2,11 @@
 import json
 import logging
 from . import api
-from flask import jsonify
+from flask import jsonify,request,g
 from app.utils.response_code import RET
 from app import constants,redis_store
-from app.models import Area
+from app.utils.comments import logout_req
+from app.models import Area, HouseInfo
 
 
 @api.route('/areas')
@@ -40,3 +41,33 @@ def get_areas():
     except Exception as e:
         logging.error(e)
     return jsonify(errno=RET.OK, errmsg='ok', data=areas)
+
+
+
+@api.route('/houses',methods=['POST'])
+@logout_req
+def save_house():
+    user_id = g.user_id
+    data = request.get_data()
+    if not data:
+        return jsonify(errno=RET.PARAMERR, errmsg="参数不完整")
+    house_info = json.loads(data)
+
+    print(house_info)
+    # 保存数据库
+    house = HouseInfo.query.filter_by(user_id=user_id)
+    house.update({
+        "title": house_info["title"],
+        "price": house_info["price"],
+        "address": house_info["address"],
+        "room_count": house_info["room_count"],
+        "acreage": house_info["acreage"],
+        "unit": house_info["unit"],
+        "beds": house_info["beds"],
+        "deposit": house_info["deposit"],
+        "min_days": house_info["min_days"],
+        "max_days": house_info["max_days"]
+        # "facilities" : house_info['facility'],
+        # "area_id" : house_info["area_id"]
+    })
+    return jsonify(errno=RET.OK, errmsg="ok",data=house.first().to_dict())

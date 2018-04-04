@@ -84,20 +84,21 @@ def set_user_name():
 def rel_auth():
     '''用户实名认证'''
     user_id = g.user_id
-    user = UserInfo.query.filter_by(id=user_id)
+    user = UserInfo.query.filter_by(id=user_id).first()
     if request.method == 'POST':
         data = json.loads(request.get_data())
         real_name = data.get('real_name')
         id_card = data.get('id_card')
         # 保存数据库
         try:
-            user.update({'real_name':real_name,"id_card":id_card})
+            #只有当 真是姓名和省份在好为空才能添加
+            UserInfo.query.filter_by(id=user_id,real_name='',id_card='').update({'real_name':real_name,"id_card":id_card})
             db.session.commit()
         except Exception as e:
             logging.error(e)
             db.rollback()
             return jsonify(errno=RET.DBERR,errmsg='数据错误')
-    return jsonify(errno=RET.OK,errmsg='ok',data=user.first().get_dict())
+    return jsonify(errno=RET.OK,errmsg='ok',data=user.get_dict())
 
 
 

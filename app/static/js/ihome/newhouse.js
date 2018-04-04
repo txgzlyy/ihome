@@ -30,6 +30,7 @@ $(document).ready(function(){
         // 检验表单数据是否完整
         // 将表单的数据形成json，向后端发送请求
         var formData = {};
+        //$(this).serializeArray()   一个数组 包含所有表单提交数据 [{name:xxx,value:xxx}.....]
         $(this).serializeArray().map(function (x) { formData[x.name] = x.value });
 
         // 对于房屋设施的checkbox需要特殊处理
