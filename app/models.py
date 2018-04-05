@@ -82,9 +82,22 @@ class HouseInfo(Basec, db.Model):
     house_pic = db.relationship('HousePic')
     order = db.relationship("Order", backref="ih_houseinfos")  # order 是房屋信息的一个属性
 
-    def get_dict(self):
+    def to_dict(self):
         data = {
-            "house_id": self.id
+            "house_id": self.id,
+            "title" : self.title,
+            "price" : self.price,
+            "address" : self.address,
+            "room_count" : self.room_count,
+            "acreage" : self.acreage,
+            "capacity": self.capacity,
+            "unit" : self.unit,
+            "beds" : self.beds,
+            "deposit" : self.deposit,
+            "min_days" : self.min_days,
+            "max_days" : self.max_days,
+            "area_id" : self.area_id,
+            "facilities": self.facilities
         }
         return data
 

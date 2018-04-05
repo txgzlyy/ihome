@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78bc4944-7fea-4299-9483-697cd688de2a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vagrant.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/api_1_0/__init__.py" afterPath="$PROJECT_DIR$/app/api_1_0/__init__.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/api_1_0/house.py" afterPath="$PROJECT_DIR$/app/api_1_0/house.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/api_1_0/profile.py" afterPath="$PROJECT_DIR$/app/api_1_0/profile.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models.py" afterPath="$PROJECT_DIR$/app/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/html/newhouse.html" afterPath="$PROJECT_DIR$/app/static/html/newhouse.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/static/js/ihome/newhouse.js" afterPath="$PROJECT_DIR$/app/static/js/ihome/newhouse.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/log" afterPath="$PROJECT_DIR$/logs/log" />
     </list>
@@ -41,8 +39,8 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="479">
-              <caret line="88" column="19" lean-forward="true" selection-start-line="88" selection-start-column="19" selection-end-line="88" selection-end-column="19" />
+            <state relative-caret-position="287">
+              <caret line="90" column="8" lean-forward="false" selection-start-line="90" selection-start-column="8" selection-end-line="90" selection-end-column="8" />
               <folding>
                 <element signature="e#15#31#0" expanded="true" />
                 <element signature="e#401#1751#0" expanded="false" />
@@ -54,20 +52,20 @@
       <file leaf-file-name="newhouse.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/static/html/newhouse.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
+            <state relative-caret-position="328">
               <caret line="103" column="79" lean-forward="false" selection-start-line="103" selection-start-column="71" selection-end-line="103" selection-end-column="79" />
               <folding>
-                <element signature="n#form#1;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#li#1;n#form#0;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="newhouse.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="newhouse.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/static/js/ihome/newhouse.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="62" column="57" lean-forward="false" selection-start-line="62" selection-start-column="49" selection-end-line="62" selection-end-column="57" />
+            <state relative-caret-position="253">
+              <caret line="35" column="21" lean-forward="true" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -76,21 +74,43 @@
       <file leaf-file-name="response_code.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/utils/response_code.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="463">
+            <state relative-caret-position="667">
               <caret line="29" column="16" lean-forward="false" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="house.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="house.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/api_1_0/house.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="479">
-              <caret line="68" column="42" lean-forward="true" selection-start-line="68" selection-start-column="42" selection-end-line="68" selection-end-column="42" />
+            <state relative-caret-position="322">
+              <caret line="89" column="0" lean-forward="true" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
               <folding>
                 <element signature="e#15#26#0" expanded="true" />
-                <element signature="e#299#1155#0" expanded="false" />
+                <element signature="e#384#1240#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="verifycode.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/api_1_0/verifycode.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-136">
+              <caret line="131" column="22" lean-forward="false" selection-start-line="131" selection-start-column="8" selection-end-line="131" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profile.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/api_1_0/profile.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="322">
+              <caret line="23" column="35" lean-forward="false" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="35" />
+              <folding>
+                <element signature="e#1248#1592#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -109,6 +129,7 @@
     <findStrings>
       <find>areas</find>
       <find>imageCodeId</find>
+      <find>form-house-image</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -133,9 +154,10 @@
         <option value="$PROJECT_DIR$/app/api_1_0/__init__.py" />
         <option value="$PROJECT_DIR$/app/static/js/ihome/index.js" />
         <option value="$PROJECT_DIR$/app/api_1_0/profile.py" />
-        <option value="$PROJECT_DIR$/app/static/js/ihome/newhouse.js" />
+        <option value="$PROJECT_DIR$/app/static/html/newhouse.html" />
         <option value="$PROJECT_DIR$/app/api_1_0/house.py" />
         <option value="$PROJECT_DIR$/app/models.py" />
+        <option value="$PROJECT_DIR$/app/static/js/ihome/newhouse.js" />
       </list>
     </option>
   </component>
@@ -146,9 +168,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="65" />
+    <option name="x" value="61" />
     <option name="y" value="24" />
-    <option name="width" value="1855" />
+    <option name="width" value="1859" />
     <option name="height" value="1056" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -185,8 +207,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -538,18 +560,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
+    <frame x="61" y="24" width="1859" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14980653" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15168229" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2682672" sideWeight="0.50193477" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31941545" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980666" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22442588" sideWeight="0.49806523" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33298537" sideWeight="0.49806523" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -557,6 +578,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -570,8 +592,8 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31941545" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2682672" sideWeight="0.49806523" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14980653" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22442588" sideWeight="0.49806523" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15168229" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -832,13 +854,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/api_1_0/verifycode.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3013">
-          <caret line="131" column="22" lean-forward="false" selection-start-line="131" selection-start-column="8" selection-end-line="131" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/utils/comments.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
@@ -871,28 +886,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/api_1_0/user.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="743">
-          <caret line="109" column="12" lean-forward="true" selection-start-line="109" selection-start-column="12" selection-end-line="109" selection-end-column="12" />
-          <folding>
-            <element signature="e#15#33#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/api_1_0/profile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="89" column="6" lean-forward="true" selection-start-line="89" selection-start-column="6" selection-end-line="89" selection-end-column="6" />
-          <folding>
-            <element signature="e#15#32#0" expanded="false" />
-            <element signature="e#385#1177#0" expanded="false" />
-            <element signature="e#1248#1592#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/api_1_0/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -905,7 +898,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
           <caret line="39" column="129" lean-forward="true" selection-start-line="39" selection-start-column="129" selection-end-line="39" selection-end-column="129" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -919,34 +911,63 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/utils/response_code.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
+        <state relative-caret-position="667">
           <caret line="29" column="16" lean-forward="false" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/html/newhouse.html">
+    <entry file="file://$PROJECT_DIR$/app/api_1_0/user.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="103" column="79" lean-forward="false" selection-start-line="103" selection-start-column="71" selection-end-line="103" selection-end-column="79" />
+        <state relative-caret-position="554">
+          <caret line="109" column="12" lean-forward="true" selection-start-line="109" selection-start-column="12" selection-end-line="109" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/api_1_0/verifycode.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-136">
+          <caret line="131" column="22" lean-forward="false" selection-start-line="131" selection-start-column="8" selection-end-line="131" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/api_1_0/profile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="23" column="35" lean-forward="false" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="35" />
           <folding>
-            <element signature="n#form#1;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#1248#1592#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/js/ihome/newhouse.js">
+    <entry file="file://$PROJECT_DIR$/app/api_1_0/house.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="62" column="57" lean-forward="false" selection-start-line="62" selection-start-column="49" selection-end-line="62" selection-end-column="57" />
-          <folding />
+        <state relative-caret-position="322">
+          <caret line="89" column="0" lean-forward="true" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+          <folding>
+            <element signature="e#15#26#0" expanded="true" />
+            <element signature="e#384#1240#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/html/newhouse.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="103" column="79" lean-forward="false" selection-start-line="103" selection-start-column="71" selection-end-line="103" selection-end-column="79" />
+          <folding>
+            <element signature="n#div#0;n#li#1;n#form#0;n#ul#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="88" column="19" lean-forward="true" selection-start-line="88" selection-start-column="19" selection-end-line="88" selection-end-column="19" />
+        <state relative-caret-position="287">
+          <caret line="90" column="8" lean-forward="false" selection-start-line="90" selection-start-column="8" selection-end-line="90" selection-end-column="8" />
           <folding>
             <element signature="e#15#31#0" expanded="true" />
             <element signature="e#401#1751#0" expanded="false" />
@@ -954,14 +975,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/api_1_0/house.py">
+    <entry file="file://$PROJECT_DIR$/app/static/js/ihome/newhouse.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="68" column="42" lean-forward="true" selection-start-line="68" selection-start-column="42" selection-end-line="68" selection-end-column="42" />
-          <folding>
-            <element signature="e#15#26#0" expanded="true" />
-            <element signature="e#299#1155#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="253">
+          <caret line="35" column="21" lean-forward="true" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
