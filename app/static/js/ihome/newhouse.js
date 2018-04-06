@@ -25,24 +25,24 @@ $(document).ready(function(){
     }, "json");
 
 
-    $.get("/api/v1.0/houses", function (resp) {
-        if ("0" == resp.errno) {
-            for(var item in resp.data){
-                $("input[name="+item+"]").val(resp.data[item]);
-                $("textarea[name="+item+"]").text(resp.data[item]);
-                if(item == 'facilitys'){
-                    for(var i in resp.data[item]){
-                        $("input[value="+i+"]").attr("checked",'checked');
-                    }
-                }
-
-            }
-            console.log(resp.data);
-            //$("#area-id").html(rendered_html);
-        } else {
-            alert(resp.errmsg);
-        }
-    }, "json");
+    // $.get("/api/v1.0/user/houses", function (resp) {
+    //     if ("0" == resp.errno) {
+    //         for(var item in resp.data.houses){
+    //             $("input[name="+item+"]").val(resp.data.houses[item]);
+    //             $("textarea[name="+item+"]").text(resp.data.houses[item]);
+    //             if(item == 'facilitys'){
+    //                 for(var i in resp.data.houses[item]){
+    //                     $("input[value="+i+"]").attr("checked",'checked');
+    //                 }
+    //             }
+    //
+    //         }
+    //         console.log(resp.data);
+    //         //$("#area-id").html(rendered_html);
+    //     } else {
+    //         alert(resp.errmsg);
+    //     }
+    // }, "json");
 
     // 处理房屋基本信息的表单数据
     $("#form-house-info").submit(function (e) {
@@ -115,4 +115,4 @@ $(document).ready(function(){
     })
 
 
-})
+});

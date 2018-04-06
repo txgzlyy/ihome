@@ -86,18 +86,20 @@ class HouseInfo(Basec, db.Model):
         data = {
             "house_id": self.id,
             "title" : self.title,
-            "price" : self.price,
+            "price" : self.price/100,
             "address" : self.address,
             "room_count" : self.room_count,
             "acreage" : self.acreage,
             "capacity": self.capacity,
             "unit" : self.unit,
             "beds" : self.beds,
-            "deposit" : self.deposit,
+            "deposit" : self.deposit/100,
             "min_days" : self.min_days,
             "max_days" : self.max_days,
             "area_id" : self.area_id,
-            "facilities": self.facilities
+            "facilities": self.facilities,
+            "index_image_url": self.index_image_url,
+            "ctime": self.create_time.strftime('%Y-%m-%d %H:%M:%S')
         }
         return data
 
