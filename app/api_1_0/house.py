@@ -7,7 +7,7 @@ from app.utils.response_code import RET
 from app import constants,redis_store
 from app.utils.comments import logout_req
 from app.utils.img_store import img_store
-from app.models import Area, HouseInfo,HousePic,Facility
+from app.models import Area,HouseInfo,HousePic,Facility,house_facility
 from app import db
 
 
@@ -49,7 +49,7 @@ def get_areas():
 @logout_req
 def get_house():
     '''
-     获取房屋信息
+     获取房东所有房屋信息
     '''
     user_id = g.user_id
     house_o = HouseInfo.query.filter_by(user_id=user_id).all()
@@ -124,42 +124,6 @@ def save_house():
     except Exception as e:
         return jsonify(errno=RET.PARAMERR, errmsg="参数错误")
 
-    # # 如果该数据以存在
-    # house_o = HouseInfo.query.filter_by(user_id=user_id)
-    # if house_o.first():
-    #     #更新操作
-    #     house_o.update({
-    #         'user_id': user_id,
-    #         'title': title,
-    #         'price': price,
-    #         'address': address,
-    #         'room_count': room_count,
-    #         'acreage': acreage,
-    #         'unit': unit,
-    #         'beds': beds,
-    #         'deposit': deposit,
-    #         'min_days': min_days,
-    #         'max_days': max_days,
-    #         'area_id': area_id
-    #     })
-    #     if house_info.get("facilities"):
-    #         # 查询设施id在house_info["facilities"]列表里面  select * from xxx where id in house_info["facilities"]
-    #         try:
-    #             facilities = Facility.query.filter(Facility.id.in_(house_info["facilities"])).all()
-    #             house_o.update({"facilities":facilities})
-    #         except Exception as e:
-    #             logging.error(e)
-    #             return jsonify(errno=RET.DBERR, errmsg='数据库错误')
-    #     # 保存数据库
-    #     try:
-    #         db.session.commit()
-    #     except Exception as e:
-    #         logging.error(e)
-    #         db.rollback()
-    #         return jsonify(errno=RET.DBERR, errmsg='数据错误')
-    #     return jsonify(errno=RET.OK, errmsg="ok", data={"house_id":house_o.first().id})
-    #
-    # #  数据库中不存在 新添加
     # 保存房屋基本信息数据到数据库
     house = HouseInfo(
         user_id=user_id,
@@ -176,10 +140,10 @@ def save_house():
         area_id=area_id
     )
     db.session.add(house)
-    if house_info.get("facilities"):
+    if house_info.get("facility"):
         # 查询设施id在house_info["facilities"]列表里面  select * from xxx where id in house_info["facilities"]
         try:
-            facilities = Facility.query.filter(Facility.id.in_(house_info["facilities"])).all()
+            facilities = Facility.query.filter(Facility.id.in_(house_info["facility"])).all()
             house.facilities = facilities
         except Exception as e:
             logging.error(e)
@@ -195,10 +159,42 @@ def save_house():
     return jsonify(errno=RET.OK, errmsg="ok",data={"house_id": house.id})
 
 
+@api.route('/houses/<int:house_id>',methods=['GET'])
+@logout_req
+def detail_house(house_id):
+    '''
+    获取房屋基本信息
+    '''
+    try:
+        house = HouseInfo.query.get(house_id)
+    except Exception as e:
+        logging.error(e)
+        return jsonify(errno=RET.DBERR, errmsg="数据库错误")
+
+    if not house:
+        return jsonify(errno=RET.DATAERR, errmsg="房屋不存在")
+
+    obj = house.to_dict()
+    area_id = obj["area_id"]
+    obj['img_urls'] = []
+    obj["facilities"] = []
+    try:
+        obj["area_name"] = Area.query.get(area_id).name
+        img_urls = HousePic.query.filter_by(house_id=house_id).all()
+        #facilities = house_facility.query.filter_by(house_id=house_id)
+        print obj['facilities']
+        # 获取该房屋所有图片
+        for img in img_urls:
+            obj['img_urls'].append(constants.QINIUIMGURL+img.img_url)
+    except Exception as e:
+        logging.error(e)
+        return jsonify(errno=RET.DBERR, errmsg="数据库错误")
+    return jsonify(errno=RET.OK, errmsg="ok", data={"house": obj})
+
+
 @api.route('/houses/<int:house_id>/images',methods=["POST"])
 @logout_req
 def save_house_img(house_id):
-
     try:
         house = HouseInfo.query.filter_by(id=house_id).first()
     except Exception as e:
