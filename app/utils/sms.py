@@ -8,22 +8,22 @@ from ..libs.ronglian_yun.CCPRestSDK import REST
 import ConfigParser
 
 #主帐号
-accountSid= '8a216da862467c3a01626594d1a70b89';
+accountSid= '8a216da862467c3a01626594d1a70b89'
 
 #主帐号Token
-accountToken= '6a67bd9209334b0d98c807dd929d4e90';
+accountToken= '6a67bd9209334b0d98c807dd929d4e90'
 
 #应用Id
-appId='8a216da862467c3a01626594d1fd0b8f';
+appId='8a216da862467c3a01626594d1fd0b8f'
 
 #请求地址，格式如下，不需要写http://
-serverIP='app.cloopen.com';
+serverIP='app.cloopen.com'
 
 #请求端口 
-serverPort='8883';
+serverPort='8883'
 
 #REST版本号
-softVersion='2013-12-26';
+softVersion='2013-12-26'
 
   # 发送模板短信
   # @param to 手机号码
