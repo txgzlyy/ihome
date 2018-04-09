@@ -82,13 +82,29 @@ class HouseInfo(Basec, db.Model):
     house_pic = db.relationship('HousePic')
     order = db.relationship("Order", backref="ih_houseinfos")  # order 是房屋信息的一个属性
 
-    def to_dict(self):
+    def house_bic(self):
+        """将基本信息转换为字典数据"""
         data = {
             "house_id": self.id,
-            "title" : self.title,
-            "price" : self.price/100,
-            "address" : self.address,
+            "title": self.title,
+            "price": self.price / 100,
+            "index_image_url": constants.QINIUIMGURL + self.index_image_url if self.index_image_url else "",
+            "area_name": self.ih_areas.name,
+            "ctime": self.create_time.strftime('%Y-%m-%d')
+        }
+        return data
+
+    def to_full_dict(self):
+        """将详细信息转换为字典数据"""
+        data = {
+            "hid": self.id,
+            "user_id": self.user_id,
+            "title": self.title,
+            "price": self.price / 100,
+            "user_avatar": constants.QINIUIMGURL + self.ih_userinfos.author_url if self.ih_userinfos.author_url else "",
+            "user_name": self.ih_userinfos.user_name,
             "room_count" : self.room_count,
+            "address": self.address,
             "acreage" : self.acreage,
             "capacity": self.capacity,
             "unit" : self.unit,
@@ -96,11 +112,19 @@ class HouseInfo(Basec, db.Model):
             "deposit" : self.deposit/100,
             "min_days" : self.min_days,
             "max_days" : self.max_days,
-            "area_id" : self.area_id,
-            "facilities": self.facilities,
-            "index_image_url": self.index_image_url,
-            "ctime": self.create_time.strftime('%Y-%m-%d %H:%M:%S')
+            #"facilities": self.facilities,
         }
+        # 图片
+        images = []
+        for img in self.house_pic:
+            images.append(constants.QINIUIMGURL + img.img_url if img.img_url else "")
+        data['img_urls'] = images
+        # 房屋设施
+        facilities = []
+        for facilitie in self.facilities:
+            facilities.append(facilitie.id)
+        data["facilities"] = facilities
+
         return data
 
 

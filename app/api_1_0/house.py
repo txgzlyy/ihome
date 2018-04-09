@@ -55,16 +55,8 @@ def get_house():
     house_o = HouseInfo.query.filter_by(user_id=user_id).all()
     houses = []
     for house in house_o:
-        obj = house.to_dict()
-        area_id = obj["area_id"]
-        try:
-            obj["area_name"] = Area.query.get(area_id).name
-        except Exception as e:
-            logging.error(e)
-            return jsonify(errno=RET.DBERR, errmsg="数据库错误")
-        obj['index_image_url'] = constants.QINIUIMGURL + obj['index_image_url']
+        obj = house.house_bic()
         houses.append(obj)
-
     return jsonify(errno=RET.OK, errmsg="ok", data={"houses":houses})
 
 
@@ -159,12 +151,61 @@ def save_house():
     return jsonify(errno=RET.OK, errmsg="ok",data={"house_id": house.id})
 
 
+@api.route('/houses/index',methods=['GET'])
+def house_index():
+    '''获取房屋订单数目最多的5条数据'''
+    # 尝试从redis获取
+    try:
+        house_redis_data = redis_store.get("IndexHouseData")
+    except Exception as e:
+        logging.error(e)
+        house_redis_data = None
+    if house_redis_data:
+        logging.info("hit house index info redis")
+        resp = '{"errno":"0", "errmsg":"OK", "data":%s}' % house_redis_data
+        return resp, 200, {"Content-Type": "application/json", }
+
+    # 从数据库取
+    try:
+        houses = HouseInfo.query.order_by(HouseInfo.order_count.desc()).limit(constants.IndexHouseNum)  # 降序
+    except Exception as e:
+        logging.error(e)
+        return jsonify(errno=RET.DBERR, errmsg="数据库")
+
+    house_datas = []
+    for house in houses:
+        house_datas.append(house.house_bic())
+
+    # 存入redis
+    house_datas_str = json.dumps(house_datas)
+    try:
+        redis_store.setex("IndexHouseData", constants.INDEX_HOUSE_DATA_TIME, house_datas_str)
+    except Exception as e:
+        logging.error(e)
+
+    resp = '{"errno":"0", "errmsg":"OK", "data":%s}' % house_datas_str
+    return resp, 200, {"Content-Type": "application/json", }
+
+
 @api.route('/houses/<int:house_id>',methods=['GET'])
 @logout_req
 def detail_house(house_id):
     '''
     获取房屋基本信息
     '''
+    user_id = g.user_id
+    # 尝试从redis获取
+    try:
+        house_redis_data = redis_store.get('HouseId='+str(house_id))
+    except Exception as e:
+        logging.error(e)
+        house_redis_data = None
+    # 直接加载redis中的数据
+    if house_redis_data:
+        logging.info("hit house_id=%d redis"%house_id)
+        resp = '{"errno":"0", "errmsg":"OK", "data":{"user_id":%s, "house":%s}}' % (user_id, house_redis_data)
+        return resp, 200, {"Content-Type": "application/json", }
+
     try:
         house = HouseInfo.query.get(house_id)
     except Exception as e:
@@ -173,23 +214,18 @@ def detail_house(house_id):
 
     if not house:
         return jsonify(errno=RET.DATAERR, errmsg="房屋不存在")
+    # 获取房屋信息
+    house_data = house.to_full_dict()
 
-    obj = house.to_dict()
-    area_id = obj["area_id"]
-    obj['img_urls'] = []
-    obj["facilities"] = []
+    # 存入redis
+    house_data_str = json.dumps(house_data)
     try:
-        obj["area_name"] = Area.query.get(area_id).name
-        img_urls = HousePic.query.filter_by(house_id=house_id).all()
-        #facilities = house_facility.query.filter_by(house_id=house_id)
-        print obj['facilities']
-        # 获取该房屋所有图片
-        for img in img_urls:
-            obj['img_urls'].append(constants.QINIUIMGURL+img.img_url)
+        redis_store.setex("HouseId="+str(house_id), constants.HOUSE_DATA_STR, house_data_str)
     except Exception as e:
         logging.error(e)
-        return jsonify(errno=RET.DBERR, errmsg="数据库错误")
-    return jsonify(errno=RET.OK, errmsg="ok", data={"house": obj})
+
+    resp = '{"errno":"0", "errmsg":"OK", "data":{"user_id":%s, "house":%s}}' % (user_id, house_data_str)
+    return resp, 200, {"Content-Type" : "application/json",}
 
 
 @api.route('/houses/<int:house_id>/images',methods=["POST"])
