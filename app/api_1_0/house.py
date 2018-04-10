@@ -7,8 +7,9 @@ from app.utils.response_code import RET
 from app import constants,redis_store
 from app.utils.comments import logout_req
 from app.utils.img_store import img_store
-from app.models import Area,HouseInfo,HousePic,Facility,house_facility
+from app.models import Area,HouseInfo,HousePic,Facility,Order
 from app import db
+from datetime import datetime
 
 
 @api.route('/areas')
@@ -272,6 +273,78 @@ def save_house_img(house_id):
     url = constants.QINIUIMGURL + image_name
     return jsonify(errno=RET.OK, errmsg="ok", data={"url":url})
 
+
+@api.route('/houses/',methods=['GET'])
+def serch_house():
+    '''
+    不需要登录
+    ?aid=&sd=2018-04-11&ed=2018-04-20&sk=new&p=1
+    params = {
+        aid:areaId,  地区id
+        sd:startDate,  开始入住时间
+        ed:endDate,    结束时间
+        sk:sortKey,    排序关键字
+        p:next_page    下一页
+    }
+    '''
+    aid = request.args.get('aid')
+    start_date = request.args.get("sd")
+    end_date = request.args.get("ed")
+    order_key = request.args.get("sk") # 默认是new
+    page_num = request.args.get('p')
+    print start_date,end_date
+    # 查询条件
+    params = []
+
+    try:
+        # 找出搜寻条件和订单时间冲突的所有房屋id
+        if start_date and end_date:
+            # 开始时间和结束时间都有
+            # 字符串转成时间格式   2018-04-11 00:00:00
+            start_date = datetime.strptime(start_date, "%Y-%m-%d")
+            end_date = datetime.strptime(end_date, "%Y-%m-%d")
+            house_ids = [house_id for house_id in Order.query.filter(Order.begin_date < end_date and Order.end_date > start_date).all()]
+        elif start_date:
+            # 只有开始时间
+            start_date = datetime.strptime(start_date, "%Y-%m-%d")
+            house_ids = [house_id for house_id in Order.query.filter(Order.end_date > start_date).all()]
+        elif end_date:
+            # 只有结束时间
+            end_date = datetime.strptime(end_date, "%Y-%m-%d")
+            house_ids = [house_id for house_id in Order.query.filter(Order.begin_date < end_date).all()]
+        else:
+            # 全部 满足没有冲突的订单
+            house_ids = ['']
+    except Exception as e:
+        logging.error(e)
+        return jsonify(errno=RET.DBERR, errmsg='数据库错误')
+
+    # 区域
+    if aid:
+        params.append(HouseInfo.area_id == aid)
+
+    # 把冲突的排除并添加到查询条件 params
+    params.append(HouseInfo.id.notin_(house_ids))
+
+    try:
+        # 判断关键字
+        if order_key == 'booking':
+            # 入住最多
+            # 满足条件的房屋
+            houses = HouseInfo.query.filter(*params).order_by(HouseInfo.order_count.desc())
+        elif order_key == 'price-inc':
+            # 价格 低-高
+            houses = HouseInfo.query.filter(*params).order_by(HouseInfo.price.asc())
+        elif order_key == 'price-des':
+            # 价格 高-低
+            houses = HouseInfo.query.filter(*params).order_by(HouseInfo.price.desc())
+        else:
+            # 默认最新上线
+            houses = HouseInfo.query.filter(*params).order_by(HouseInfo.create_time.desc())
+    except Exception as e:
+        logging.error(e)
+        return jsonify(errno=RET.DBERR, errmsg='数据库错误')
+    return jsonify(errno=RET.OK, errmsg='OK',data={"otal_page":page_num,"houses":houses})
 
 
 

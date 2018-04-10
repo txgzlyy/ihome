@@ -67,7 +67,7 @@ $(document).ready(function(){
     var queryData = decodeQuery();
     var startDate = queryData["sd"];
     var endDate = queryData["ed"];
-    $("#start-date").val(startDate); 
+    $("#start-date").val(startDate);  // 把从 location.href 获取的开始时间参数赋值到本页面，  方便往后台传参数时在到本页面取
     $("#end-date").val(endDate); 
     updateFilterDateDisplay();
     var areaName = queryData["aname"];
