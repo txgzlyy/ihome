@@ -287,15 +287,14 @@ def serch_house():
         p:next_page    下一页
     }
     '''
-    aid = request.args.get('aid')
+    aid = request.args.get("aid")
     start_date = request.args.get("sd")
     end_date = request.args.get("ed")
     order_key = request.args.get("sk") # 默认是new
     page_num = request.args.get('p')
-    print start_date,end_date
+    print aid,'------------------------------------------------------'
     # 查询条件
     params = []
-
     try:
         # 找出搜寻条件和订单时间冲突的所有房屋id
         if start_date and end_date:
@@ -325,13 +324,13 @@ def serch_house():
 
     # 把冲突的排除并添加到查询条件 params
     params.append(HouseInfo.id.notin_(house_ids))
-
     try:
         # 判断关键字
         if order_key == 'booking':
             # 入住最多
             # 满足条件的房屋
             houses = HouseInfo.query.filter(*params).order_by(HouseInfo.order_count.desc())
+
         elif order_key == 'price-inc':
             # 价格 低-高
             houses = HouseInfo.query.filter(*params).order_by(HouseInfo.price.asc())
@@ -344,7 +343,10 @@ def serch_house():
     except Exception as e:
         logging.error(e)
         return jsonify(errno=RET.DBERR, errmsg='数据库错误')
-    return jsonify(errno=RET.OK, errmsg='OK',data={"otal_page":page_num,"houses":houses})
+
+    house_data = [house.house_bic() for house in houses]
+
+    return jsonify(errno=RET.OK, errmsg='OK',data={"otal_page":page_num,"houses":house_data})
 
 
 

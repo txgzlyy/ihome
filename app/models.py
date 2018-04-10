@@ -89,7 +89,10 @@ class HouseInfo(Basec, db.Model):
             "title": self.title,
             "price": self.price / 100,
             "index_image_url": constants.QINIUIMGURL + self.index_image_url if self.index_image_url else "",
+            "user_avatar": constants.QINIUIMGURL + self.ih_userinfos.author_url if self.ih_userinfos.author_url else "",
             "area_name": self.ih_areas.name,
+            "room_count": self.room_count,
+            "order_count": self.order_count,
             "ctime": self.create_time.strftime('%Y-%m-%d')
         }
         return data
@@ -112,7 +115,6 @@ class HouseInfo(Basec, db.Model):
             "deposit" : self.deposit/100,
             "min_days" : self.min_days,
             "max_days" : self.max_days,
-            #"facilities": self.facilities,
         }
         # 图片
         images = []

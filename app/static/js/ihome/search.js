@@ -32,6 +32,7 @@ function updateFilterDateDisplay() {
 // 默认采用追加方式
 // action=renew 代表页面数据清空从新展示
 function updateHouseData(action) {
+
     var areaId = $(".filter-area>li.active").attr("area-id");
     if (undefined == areaId) areaId = "";
     var startDate = $("#start-date").val();
@@ -44,6 +45,7 @@ function updateHouseData(action) {
         sk:sortKey,
         p:next_page
     };
+    console.log(params.aid)
     $.get("/api/v1.0/houses", params, function(resp){
         house_data_querying = false;
         if ("0" == resp.errno) {
@@ -93,6 +95,7 @@ $(document).ready(function(){
                     $(".filter-area").append('<li area-id="'+ data.data[i].aid+'">'+ data.data[i].aname+'</li>');
                 }
             }
+
             updateHouseData("renew");
             var windowHeight = $(window).height()
             window.onscroll=function(){
