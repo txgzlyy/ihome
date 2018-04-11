@@ -13,8 +13,6 @@ from ..models import UserInfo
 from app.celery_task.sms.tasks import send_sms
 
 
-
-
 @api.route('/imagecode/')
 def img_code():
     """图片验证码"""
