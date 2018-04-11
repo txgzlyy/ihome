@@ -60,7 +60,7 @@ $(document).ready(function(){
         if (0 == resp.errno) {
             $(".house-info>img").attr("src", resp.data.house.img_urls[0]);
             $(".house-text>h3").html(resp.data.house.title);
-            $(".house-text>p>span").html((resp.data.house.price/100.0).toFixed(0));
+            $(".house-text>p>span").html((resp.data.house.price));
         }
     });
     // 订单提交

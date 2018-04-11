@@ -188,6 +188,20 @@ class Order(Basec,db.Model):
         default="WAIT_ACCEPT", index=True)
     comment = db.Column(db.Text)  # 订单的评论信息或者拒单原因
 
+    def get_dict(self):
+        data = {
+            "order_id": self.id,
+            "status": self.status,
+            "img_url": constants.QINIUIMGURL + self.ih_houseinfos.index_image_url if self.ih_houseinfos.index_image_url else "",
+            "ctime": datetime.strftime(self.create_time, "%Y-%m-%d"),
+            "start_date": datetime.strftime(self.begin_date, "%Y-%m-%d"),
+            "end_date": datetime.strftime(self.end_date, "%Y-%m-%d"),
+            "amount": self.amount,
+            "days": self.days,
+            "comment": self.comment
+        }
+        return data
+
 
 
 
