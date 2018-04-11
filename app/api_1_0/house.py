@@ -287,12 +287,12 @@ def serch_house():
         p:next_page    下一页
     }
     '''
-    aid = request.args.get("aid")
-    start_date = request.args.get("sd")
-    end_date = request.args.get("ed")
-    order_key = request.args.get("sk") # 默认是new
-    page_num = request.args.get('p')
-    print aid,'------------------------------------------------------'
+    aid = request.args.get("aid",'')
+    start_date = request.args.get("sd",'')
+    end_date = request.args.get("ed",'')
+    order_key = request.args.get("sk",'new') # 默认是new
+    page_num = request.args.get('p','1')
+
     # 查询条件
     params = []
     try:
@@ -322,31 +322,79 @@ def serch_house():
     if aid:
         params.append(HouseInfo.area_id == aid)
 
+    if page_num:
+        page_num = int(page_num)
+    else:
+        page_num = 1
+
+    # 参数检验完毕  尝试从redis获取数据
+    hash_key = "HOUSES_%s_%s_%s_%s" % (aid, start_date, end_date, order_key)
+    try:
+        redis_datas = redis_store.hget(hash_key, str(page_num))
+    except Exception as e:
+        logging.error(e)
+        redis_datas = None
+
+    if redis_datas:
+        logging.info("hit house list redis")
+        return redis_datas, 200 , {"Content-Type" : "application/json",}
+
+
     # 把冲突的排除并添加到查询条件 params
     params.append(HouseInfo.id.notin_(house_ids))
-    try:
-        # 判断关键字
-        if order_key == 'booking':
-            # 入住最多
-            # 满足条件的房屋
-            houses = HouseInfo.query.filter(*params).order_by(HouseInfo.order_count.desc())
 
-        elif order_key == 'price-inc':
-            # 价格 低-高
-            houses = HouseInfo.query.filter(*params).order_by(HouseInfo.price.asc())
-        elif order_key == 'price-des':
-            # 价格 高-低
-            houses = HouseInfo.query.filter(*params).order_by(HouseInfo.price.desc())
-        else:
-            # 默认最新上线
-            houses = HouseInfo.query.filter(*params).order_by(HouseInfo.create_time.desc())
+    # 判断关键字
+    if order_key == 'booking':
+        # 入住最多
+        # 满足条件的房屋
+        houses = HouseInfo.query.filter(*params).order_by(HouseInfo.order_count.desc())
+
+    elif order_key == 'price-inc':
+        # 价格 低-高
+        houses = HouseInfo.query.filter(*params).order_by(HouseInfo.price.asc())
+    elif order_key == 'price-des':
+        # 价格 高-低
+        houses = HouseInfo.query.filter(*params).order_by(HouseInfo.price.desc())
+    else:
+        # 默认最新上线
+        houses = HouseInfo.query.filter(*params).order_by(HouseInfo.create_time.desc())
+
+    # 处理分页
+    # 常见分页对象 参数 page 当前页  per_page 每页几条数据   error_out=False 当page和pre_page为None是不报错
+    page_obj = houses.paginate(page=page_num,per_page=constants.PAGE_DATAS,error_out=False)
+
+    # 获取总页数
+    total_page = page_obj.pages
+    # 获取每一业的数据
+    page_datas = page_obj.items
+    try:
+        house_data = [house.house_bic() for house in page_datas]
     except Exception as e:
         logging.error(e)
         return jsonify(errno=RET.DBERR, errmsg='数据库错误')
 
-    house_data = [house.house_bic() for house in houses]
+    # 使用redis 缓存数据  使用 hash  hset key 属性 值
+    hash_data = dict(errno=RET.OK, errmsg='OK',data={"total_page":total_page,"houses":house_data})
+    # 转字符串
+    hash_data_str = json.dumps(hash_data)
+    # 当前页 小于等于总页数
+    if page_num <= total_page:
+        try:
+            # 开启redis 事物 保证整个 redis 保存都执行
+            # 创建 管道
+            piple = redis_store.pipeline()
+            # 开启管道
+            piple.multi()
+            # hash类型保存数据
+            redis_store.hset(hash_key, str(page_num), hash_data_str)
+            # 有效时间
+            redis_store.expire(hash_key, constants.PAGE_REDIS_TIME)
+            # 执行管道
+            piple.execute()
+        except Exception as e:
+            logging.error(e)
 
-    return jsonify(errno=RET.OK, errmsg='OK',data={"otal_page":page_num,"houses":house_data})
+    return hash_data_str, 200, {"Content-Type" : "application/json",}
 
 
 

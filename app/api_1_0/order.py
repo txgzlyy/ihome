@@ -1,5 +1,5 @@
 # coding=utf-8
-import time,logging
+import logging
 from datetime import datetime
 from flask import request, jsonify, g
 from . import api
@@ -25,8 +25,31 @@ def set_order():
     if start_date and end_date:
         start_date = datetime.strptime(start_date, '%Y-%m-%d')
         end_date = datetime.strptime(end_date, '%Y-%m-%d')
+        assert end_date >= start_date
     else:
         return jsonify(errno=RET.DATAERR, errmsg="选择起止日期")
+
+    # 检验该房屋是不是存在
+    try:
+        house = HouseInfo.query.get(house_id)
+    except Exception as e:
+        logging.error(e)
+        return jsonify(errno=RET.DBERR, errmsg="房屋信息为查到")
+
+    # 检验是不是房东
+    if user_id == house.user_id:
+        return jsonify(errno=RET.DATAERR, errmsg="不能预定自己发布的房源")
+
+    try:
+        # 检查该房屋是否已经被预定 多人同事预定冲突 根据入住时间和结束时间条件查询order表
+        count = Order.query.filter(Order.house_id==house_id,Order.begin_date<=end_date,Order.end_date>=start_date).count()
+    except Exception as e:
+        logging.error(e)
+        count = 0
+
+    if count > 0:
+        return jsonify(errno=RET.DATAERR, errmsg="该房屋已经被预定")
+
 
     # 存入数据库
     order = Order(
@@ -36,8 +59,9 @@ def set_order():
         end_date=end_date
     )
     try:
-        order.house_price = HouseInfo.query.get(house_id).price/100
-        order.days = 1  # (time.mktime(end_date) - time.mktime(start_date))/(1000*3600*24)   # 转成时间戳 （毫秒）
+        order.house_price = house.price/100
+        # <type 'datetime.timedelta'>  类型 可以转成 天，时，分...
+        order.days = (end_date - start_date).days + 1
         order.amount = order.house_price * order.days  # 总价
         db.session.add(order)
     except Exception as e:
@@ -47,4 +71,4 @@ def set_order():
 
     db.session.commit()
 
-    return  jsonify(errno=RET.OK, errmsg="生产订单成功")
+    return jsonify(errno=RET.OK, errmsg="生产订单成功")
