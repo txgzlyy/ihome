@@ -147,7 +147,7 @@ def save_house():
         db.session.commit()
     except Exception as e:
         logging.error(e)
-        db.rollback()
+        db.session.rollback()
         return jsonify(errno=RET.DBERR, errmsg='数据错误')
     return jsonify(errno=RET.OK, errmsg="ok",data={"house_id": house.id})
 
@@ -267,7 +267,7 @@ def save_house_img(house_id):
         db.session.commit()
     except Exception as e:
         logging.error(e)
-        db.rollback()
+        db.session.rollback()
         return jsonify(errno=RET.DBERR, errmsg="数据存储异常")
 
     url = constants.QINIUIMGURL + image_name

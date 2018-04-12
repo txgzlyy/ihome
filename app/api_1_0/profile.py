@@ -33,7 +33,7 @@ def get_avatar():
         db.session.commit()
     except Exception as e:
         logging.error(e)
-        db.rollback()
+        db.session.rollback()
         return jsonify(errno=RET.DBERR, errmsg="数据库错误")
 
     # 通用域名 + 图片名字
@@ -74,7 +74,7 @@ def set_user_name():
         session["name"] = name
     except Exception as e:
         logging.error(e)
-        db.rollback()
+        db.session.rollback()
         return jsonify(errno=RET.DBERR, errmsg="数据错误")
     return jsonify(errno=RET.OK, errmsg="ok")
 
@@ -96,7 +96,7 @@ def rel_auth():
             db.session.commit()
         except Exception as e:
             logging.error(e)
-            db.rollback()
+            db.session.rollback()
             return jsonify(errno=RET.DBERR,errmsg='数据错误')
     return jsonify(errno=RET.OK,errmsg='ok',data=user.get_dict())
 

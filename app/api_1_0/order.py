@@ -90,10 +90,10 @@ def get_orders():
         house_ids = [house.id for house in house]
         if role == 'custom':
             # 该登录用户的所有订单   租客的订单信息  订单表中的user_id 等于自己的id
-            orders = Order.query.filter(Order.user_id == user_id)
+            orders = Order.query.filter(Order.user_id == user_id).order_by(Order.create_time.desc())
         else:
             # 自己房屋中有被下订单的房屋  房东身份   订单表中的house_id 等于自己房屋的id
-            orders = Order.query.filter(Order.house_id.in_(house_ids))
+            orders = Order.query.filter(Order.house_id.in_(house_ids)).order_by(Order.create_time.desc())
 
         if orders:
             orders_data = [order.get_dict() for order in orders]
@@ -120,17 +120,18 @@ def change_order_status(order_id):
     if action not in("accept", "reject"):
         return jsonify(errno=RET.PARAMERR, errmsg="参数不正确")
 
-    # 查询该订单是否存在
+    # 查询该订单是否存在 并且处于带接单状态
     try:
-        order = Order.query.get(order_id)
+        order = Order.query.filter(Order.id==order_id, Order.status=="WAIT_ACCEPT").first()
     except Exception as e:
         logging.error(e)
         return jsonify(errno=RET.DBERR , errmsg="订单不存在")
 
-    house_ids = [house.id for house in HouseInfo.query.filter_by(user_id=user_id).all()]
+    # 一个订单对应一个房屋  #house = HouseInfo.query.filter_by(id=order.house_id).first()
+    house = order.ih_houseinfos   # 通过关联直接获取对应房屋
 
     # 检验是不是该订单房屋的房东
-    if order.house_id not in(house_ids):
+    if order.house_id != house.id:
         return jsonify(errno=RET.DATAERR, errmsg="你不是房东无权修改")
 
     if action == "accept":
@@ -143,14 +144,14 @@ def change_order_status(order_id):
         reason = data.get("reason", '')
         if not reason:
             return jsonify(errno=RET.DATAERR, errmsg="填写原因")
-        print reason
         order.comment = reason
+
     try:
         db.session.add(order)
         db.session.commit()
     except Exception as e:
         logging.error(e)
-        db.rollback()
+        db.session.rollback()
         return jsonify(errno=RET.DBERR, errmsg="数据存储失败")
 
     return jsonify(errno=RET.OK, errmsg="OK")

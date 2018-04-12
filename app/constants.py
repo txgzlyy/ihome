@@ -19,6 +19,8 @@ INDEX_HOUSE_DATA_TIME = 3600
 PAGE_DATAS = 2
 # 房屋列表页条件查询缓存有效时间
 PAGE_REDIS_TIME = 3600
+# 支付宝沙箱环境网关
+ALIPAY_TEST_URL = "https://openapi.alipaydev.com/gateway.do?"
 
 
 

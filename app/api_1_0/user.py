@@ -108,7 +108,10 @@ def check_login():
 @logout_req
 def logout_api():
     '''登出'''
+    # 解决 csrf_token bug问题
+    csrf_token = session.get("csrf_token")
     session.clear()
+    session["csrf_token"] = csrf_token
     return jsonify(errno=RET.OK, errmsg="退出成功")
 
 

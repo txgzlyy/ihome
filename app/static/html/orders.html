@@ -33,6 +33,10 @@
                         <div class="fr order-operate">
                             <button type="button" class="btn btn-success order-comment" data-toggle="modal" data-target="#comment-modal">发表评价</button>
                         </div>
+                        {{ else if "WAIT_PAYMENT" == order.status }}
+                        <div class="fr order-operate">
+                            <button type="button" class="btn btn-success order-pay">去支付</button>
+                        </div>
                         {{/if}}
                     </div>
                     <div class="order-content">
@@ -43,7 +47,7 @@
                                 <li>创建时间：{{order.ctime}}</li>
                                 <li>入住日期：{{order.start_date}}</li>
                                 <li>离开日期：{{order.end_date}}</li>
-                                <li>合计金额：￥{{(order.amount/100.0).toFixed(0)}}(共{{order.days}}晚)</li>
+                                <li>合计金额：￥{{order.amount}}(共{{order.days}}晚)</li>
                                 <li>订单状态：
                                     <span>
                                         {{if "WAIT_ACCEPT" == order.status}}
